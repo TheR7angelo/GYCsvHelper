@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libs", "GYCsvHelper\Libs\Libs.csproj", "{D11976BD-CEF3-41B5-A3F9-84D2AD587291}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroWindow", "GYCsvHelper\MetroWindow\MetroWindow.csproj", "{E5D523D7-AD11-4956-9351-915A759ED96A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{4DB0E926-3E9F-4C89-99E5-CF7CB882D87E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D11976BD-CEF3-41B5-A3F9-84D2AD587291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D11976BD-CEF3-41B5-A3F9-84D2AD587291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D11976BD-CEF3-41B5-A3F9-84D2AD587291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D11976BD-CEF3-41B5-A3F9-84D2AD587291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D523D7-AD11-4956-9351-915A759ED96A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D523D7-AD11-4956-9351-915A759ED96A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D523D7-AD11-4956-9351-915A759ED96A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D523D7-AD11-4956-9351-915A759ED96A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DB0E926-3E9F-4C89-99E5-CF7CB882D87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DB0E926-3E9F-4C89-99E5-CF7CB882D87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DB0E926-3E9F-4C89-99E5-CF7CB882D87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DB0E926-3E9F-4C89-99E5-CF7CB882D87E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
