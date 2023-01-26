@@ -1,11 +1,14 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using CsvHelper.Configuration.Attributes;
 
 namespace Libs.SStruc;
 
-public class RestitCheckControl : INotifyPropertyChanged
+public class RestitCheckControlConvert : INotifyPropertyChanged
 {
+    private readonly PropertyInfo[] _propsMain;
+    
     private string _fileId = string.Empty;
 
     [Name("Identifiant fiche")]
@@ -287,203 +290,32 @@ public class RestitCheckControl : INotifyPropertyChanged
         }
     }
 
-    private bool _countedInTheSample;
+    private void OnPropertyChanged([CallerMemberName] string? name=null) 
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-    [Name("Compté dans l'échantillon")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool CountedInTheSample
+    public RestitCheckControlConvert(RestitCheckControl restitCheckControl)
     {
-        get => _countedInTheSample;
-        set
-        {
-            _countedInTheSample = value;
-            OnPropertyChanged();
-        }
+        _propsMain = GetType().GetProperties();
+        var instance = this;
+        SetValue(restitCheckControl, instance);
+    }
+    
+    public RestitCheckControlConvert()
+    {
+        _propsMain = GetType().GetProperties();
     }
 
-    private string _validationComment = string.Empty;
-
-    [Name("Commentaire validation")]
-    public string ValidationComment
+    private void SetValue(RestitCheckControl restitCheckControl, RestitCheckControlConvert instance)
     {
-        get => _validationComment;
-        set
+        foreach (var prop in _propsMain)
         {
-            _validationComment = value;
-            OnPropertyChanged();
+            if (!_propsMain.Contains(prop)) continue;
+
+            var value = typeof(RestitCheckControl).GetProperty(prop.Name)?.GetValue(restitCheckControl, null);
+            instance.GetType().GetProperty(prop.Name)?.SetValue(null, value);
         }
     }
-
-    private string _commentTakenUp = string.Empty;
-
-    [Name("Commentaire reprise")]
-    public string CommentTakenUp
-    {
-        get => _commentTakenUp;
-        set
-        {
-            _commentTakenUp = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private string _analyticalResult = string.Empty;
-
-    [Name("Resultat d'analyse")]
-    public string AnalyticalResult
-    {
-        get => _analyticalResult;
-        set
-        {
-            _analyticalResult = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _times;
-
-    [Name("DELAIS")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Times
-    {
-        get => _times;
-        set
-        {
-            _times = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _realTimeEcvhangesWithOrange;
-
-    [Name("ECHANGES EN TEMPS REEL AVEC ORANGE")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool RealTimeEcvhangesWithOrange
-    {
-        get => _realTimeEcvhangesWithOrange;
-        set
-        {
-            _realTimeEcvhangesWithOrange = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _complianceWithTheDelegationFramewprk;
-
-    [Name("RESPECT DU CADRE DE DELEGATION")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool ComplianceWithTheDelegationFramewprk
-    {
-        get => _complianceWithTheDelegationFramewprk;
-        set
-        {
-            _complianceWithTheDelegationFramewprk = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _safety;
-
-    [Name("SECURITE")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Safety
-    {
-        get => _safety;
-        set
-        {
-            _safety = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _damageToStructures;
-
-    [Name("DOMMAGES AUX OUVRAGES")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool DamageToStructures
-    {
-        get => _damageToStructures;
-        set
-        {
-            _damageToStructures = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _technicalCompliabce;
-
-    [Name("CONFORMITE TECHNIQUE")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool TechnicalCompliabce
-    {
-        get => _technicalCompliabce;
-        set
-        {
-            _technicalCompliabce = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _postWorkDocumentation;
-
-    [Name("DOCUMENTATION APRES TRAVAUX")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool PostWorkDocumentation
-    {
-        get => _postWorkDocumentation;
-        set
-        {
-            _postWorkDocumentation = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _invoicing;
-
-    [Name("FACTURATION")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Invoicing
-    {
-        get => _invoicing;
-        set
-        {
-            _invoicing = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _customerRelationsThirdPartiesAndCommunities;
-
-    [Name("RELATION CLIENTS, TIERS ET COLLECTIVITES")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool CustomerRelationsThirdPartiesAndCommunities
-    {
-        get => _customerRelationsThirdPartiesAndCommunities;
-        set
-        {
-            _customerRelationsThirdPartiesAndCommunities = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _environment;
-
-    [Name("ENVIRONNEMENT")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Environment
-    {
-        get => _environment;
-        set
-        {
-            _environment = value;
-            OnPropertyChanged();
-        }
-    }
-
+    
     public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    
 }
