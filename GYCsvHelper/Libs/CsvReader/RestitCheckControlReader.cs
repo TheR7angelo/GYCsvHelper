@@ -4,7 +4,7 @@ using Libs.SStruc;
 
 namespace Libs.CsvReader;
 
-public class RestitCheckControl : IReader, IDisposable
+public class RestitCheckControlReader : IReader, IDisposable
 {
     private string FilePath { get; }
     private string FileTmp { get; }
@@ -14,7 +14,7 @@ public class RestitCheckControl : IReader, IDisposable
 
     private const string BaseName = "Restitution_Fiches_Validees_complet_";
 
-    public RestitCheckControl(string filePath)
+    public RestitCheckControlReader(string filePath)
     {
         FilePath = filePath;
         FileInfo = new SFilePath(filePath);
@@ -58,20 +58,22 @@ public class RestitCheckControl : IReader, IDisposable
         csv.WriteRecords(records);
     }
     
-    public void Dispose()
-    {
-        File.Delete(FileTmp);
-    }
-
     public List<T> Convert<T>(List<object> records)
     {
         var result = new List<T>();
-        foreach (var record in records)
+        foreach (RestitCheckControl record in records)
         {
-            var p = (T)Activator.CreateInstance(typeof(T), record)!;
-            result.Add(p);
+            var convert = (IConvert)Activator.CreateInstance(typeof(T))!;
+            convert.ConvertInit(record, convert);
+            
+            result.Add((T)convert);
         }
 
         return result;
+    }
+    
+    public void Dispose()
+    {
+        File.Delete(FileTmp);
     }
 }
