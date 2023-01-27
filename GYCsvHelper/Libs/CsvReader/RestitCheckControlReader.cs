@@ -19,32 +19,24 @@ public class RestitCheckControlReader : IReader, IDisposable
         FilePath = filePath;
         FileInfo = new SFilePath(filePath);
         
-        FileSavePath = GetSavePath();
+        FileSavePath = FileInfo.GetSavePath(BaseName);
         FileTmp = Path.GetTempFileName();
-    }
-
-    private string GetSavePath()
-    {
-        var date = DateTime.Now;
-        
-        return Path.Join(FileInfo.FilePath, $"{BaseName}{date:yyyy-MM-dd}{FileInfo.FileExtension}");
     }
 
     public void CleanFirstRow(int row, bool keepHeader)
     {
-        var data = File.ReadAllLines(FilePath);
+        var data = File.ReadAllLines(FilePath, Encoding.Latin1);
 
         var linesToWrite = new List<string>();
-        IEnumerable<string> lines;
         if (keepHeader) linesToWrite.Add(data[0]);
         linesToWrite.AddRange(data.Skip(row));
         
-        File.WriteAllLines(FileTmp, linesToWrite);
+        File.WriteAllLines(FileTmp, linesToWrite, Encoding.Latin1);
     }
     
     public List<T> Read<T>()
     {
-        using var reader = new StreamReader(FileTmp);
+        using var reader = new StreamReader(FileTmp, Encoding.Latin1);
         var csv = new CsvHelper.CsvReader(reader, Common.GetConfigurationReader);
         
         return csv.GetRecords<T>().ToList();
