@@ -9,6 +9,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _fileId = string.Empty;
 
     [Name("Identifiant fiche")]
+    [Column(Column = "A")]
     public string FileId
     {
         get => _fileId;
@@ -22,6 +23,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _siteReference = string.Empty;
 
     [Name("Réference chantier")]
+    [Column(Column = "B")]
     public string SiteReference
     {
         get => _siteReference;
@@ -35,6 +37,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _state = string.Empty;
 
     [Name("Etat")]
+    [Column(Column = "C")]
     public string State
     {
         get => _state;
@@ -48,6 +51,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _validationResult = string.Empty;
 
     [Name("Résultat validation")]
+    [Column(Column = "D")]
     public string ValidationResult
     {
         get => _validationResult;
@@ -61,6 +65,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _motherFileIdentifier = string.Empty;
 
     [Name("Identifiant fiche mère")]
+    [Column(Column = "E")]
     public string MotherFileIdentifier
     {
         get => _motherFileIdentifier;
@@ -70,10 +75,25 @@ public class RestitCheckControl : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
+    
+    private string _daughterFileIdentifier = string.Empty;
+
+    [Name("Identifiant fiche fille")]
+    [Column(Column = "F")]
+    public string DaughterFileIdentifier
+    {
+        get => _daughterFileIdentifier;
+        set
+        {
+            _daughterFileIdentifier = value;
+            OnPropertyChanged();
+        }
+    }
 
     private DateTime? _validationDate;
 
     [Name("Date de validation")]
+    [Column(Column = "G")]
     [Format("yyyy-MM-dd", "dd/MM/yyyy")]
     public DateTime? ValidationDate
     {
@@ -88,6 +108,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private DateTime? _auditDate;
 
     [Name("Date de vérification")]
+    [Column(Column = "H")]
     [Format("yyyy-MM-dd", "dd/MM/yyyy")]
     public DateTime? AuditDate
     {
@@ -102,6 +123,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private DateTime? _dateOfCreation;
 
     [Name("Date de création")]
+    [Column(Column = "I")]
     [Format("yyyy-MM-dd", "dd/MM/yyyy")]
     public DateTime? DateOfCreation
     {
@@ -116,6 +138,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private DateTime? _dateOfResumption;
 
     [Name("Date de reprise")]
+    [Column(Column = "J")]
     [Format("yyyy-MM-dd HH:mm:ss.fff", "yyyy-MM-dd HH:mm:ss.ff", "yyyy-MM-dd HH:mm:ss.f", "yyyy-MM-dd HH:mm:ss")]
     public DateTime? DateOfResumption
     {
@@ -130,6 +153,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private DateTime? _expectedResumptionDate;
 
     [Name("Date de reprise attendue")]
+    [Column(Column = "K")]
     [Format("yyyy-MM-dd HH:mm:ss.fff", "yyyy-MM-dd HH:mm:ss.ff", "yyyy-MM-dd HH:mm:ss.f", "yyyy-MM-dd HH:mm:ss")]
     public DateTime? ExpectedResumptionDate
     {
@@ -144,6 +168,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _seriousMisconduct;
 
     [Name("Manquement grave")]
+    [Column(Column = "L")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool SeriousMisconduct
     {
@@ -158,6 +183,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _billingToBeCorrected;
 
     [Name("Facturation à corriger ")]
+    [Column(Column = "M")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool BillingToBeCorrected
     {
@@ -172,6 +198,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _securityToBeFixed;
 
     [Name("Sécurité à corriger ")]
+    [Column(Column = "N")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool SecurityToBeFixed
     {
@@ -186,6 +213,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _entity = string.Empty;
 
     [Name("Entité")]
+    [Column(Column = "O")]
     public string Entity
     {
         get => _entity;
@@ -199,6 +227,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _infraEntity = string.Empty;
 
     [Name("Infra-Entité")]
+    [Column(Column = "P")]
     public string InfraEntity
     {
         get => _infraEntity;
@@ -212,6 +241,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _provider = string.Empty;
 
     [Name("Fournisseur")]
+    [Column(Column = "Q")]
     public string Provider
     {
         get => _provider;
@@ -225,6 +255,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _groupSupplier = string.Empty;
 
     [Name("Fournisseur groupe")]
+    [Column(Column = "R")]
     public string GroupSupplier
     {
         get => _groupSupplier;
@@ -238,6 +269,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _domain = string.Empty;
 
     [Name("Domaine")]
+    [Column(Column = "S")]
     public string Domain
     {
         get => _domain;
@@ -251,6 +283,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _subdomain = string.Empty;
 
     [Name("Sous-domaine")]
+    [Column(Column = "T")]
     public string Subdomain
     {
         get => _subdomain;
@@ -264,6 +297,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _typeOfBenefit = string.Empty;
 
     [Name("Type de prestation")]
+    [Column(Column = "U")]
     public string TypeOfBenefit
     {
         get => _typeOfBenefit;
@@ -276,7 +310,8 @@ public class RestitCheckControl : INotifyPropertyChanged
 
     private float _tiencTct;
 
-    [Name("TIENC / TCT")]
+    [Name("TIENC / TCT"), CultureInfo("FR-fr")]
+    [Column(Column = "V")]
     public float TiencTct
     {
         get => _tiencTct;
@@ -290,6 +325,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _countedInTheSample;
 
     [Name("Compté dans l'échantillon")]
+    [Column(Column = "W")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool CountedInTheSample
     {
@@ -304,6 +340,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _validationComment = string.Empty;
 
     [Name("Commentaire validation")]
+    [Column(Column = "X")]
     public string ValidationComment
     {
         get => _validationComment;
@@ -317,6 +354,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _commentTakenUp = string.Empty;
 
     [Name("Commentaire reprise")]
+    [Column(Column = "Y")]
     public string CommentTakenUp
     {
         get => _commentTakenUp;
@@ -330,6 +368,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private string _analyticalResult = string.Empty;
 
     [Name("Resultat d'analyse")]
+    [Column(Column = "Z")]
     public string AnalyticalResult
     {
         get => _analyticalResult;
@@ -343,6 +382,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _times;
 
     [Name("DELAIS")]
+    [Column(Column = "AA")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool Times
     {
@@ -357,6 +397,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _realTimeEcvhangesWithOrange;
 
     [Name("ECHANGES EN TEMPS REEL AVEC ORANGE")]
+    [Column(Column = "AB")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool RealTimeEcvhangesWithOrange
     {
@@ -371,6 +412,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _complianceWithTheDelegationFramewprk;
 
     [Name("RESPECT DU CADRE DE DELEGATION")]
+    [Column(Column = "AC")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool ComplianceWithTheDelegationFramewprk
     {
@@ -385,6 +427,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _safety;
 
     [Name("SECURITE")]
+    [Column(Column = "AD")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool Safety
     {
@@ -399,6 +442,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _damageToStructures;
 
     [Name("DOMMAGES AUX OUVRAGES")]
+    [Column(Column = "AE")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool DamageToStructures
     {
@@ -413,6 +457,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _technicalCompliabce;
 
     [Name("CONFORMITE TECHNIQUE")]
+    [Column(Column = "AF")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool TechnicalCompliabce
     {
@@ -427,6 +472,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _postWorkDocumentation;
 
     [Name("DOCUMENTATION APRES TRAVAUX")]
+    [Column(Column = "AG")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool PostWorkDocumentation
     {
@@ -441,6 +487,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _invoicing;
 
     [Name("FACTURATION")]
+    [Column(Column = "AH")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool Invoicing
     {
@@ -455,6 +502,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _customerRelationsThirdPartiesAndCommunities;
 
     [Name("RELATION CLIENTS, TIERS ET COLLECTIVITES")]
+    [Column(Column = "AI")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool CustomerRelationsThirdPartiesAndCommunities
     {
@@ -469,6 +517,7 @@ public class RestitCheckControl : INotifyPropertyChanged
     private bool _environment;
 
     [Name("ENVIRONNEMENT")]
+    [Column(Column = "AJ")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool Environment
     {

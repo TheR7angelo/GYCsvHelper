@@ -13,6 +13,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _fileId = string.Empty;
 
     [Name("Identifiant fiche")]
+    [Column(Column = "A")]
     public string FileId
     {
         get => _fileId;
@@ -26,6 +27,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _siteReference = string.Empty;
 
     [Name("Réference chantier")]
+    [Column(Column = "B")]
     public string SiteReference
     {
         get => _siteReference;
@@ -39,6 +41,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _state = string.Empty;
 
     [Name("Etat")]
+    [Column(Column = "C")]
     public string State
     {
         get => _state;
@@ -52,6 +55,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _validationResult = string.Empty;
 
     [Name("Résultat validation")]
+    [Column(Column = "D")]
     public string ValidationResult
     {
         get => _validationResult;
@@ -65,6 +69,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _motherFileIdentifier = string.Empty;
 
     [Name("Identifiant fiche mère")]
+    [Column(Column = "E")]
     public string MotherFileIdentifier
     {
         get => _motherFileIdentifier;
@@ -74,10 +79,25 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
             OnPropertyChanged();
         }
     }
+    
+    private string _daughterFileIdentifier = string.Empty;
+
+    [Name("Identifiant fiche fille")]
+    [Column(Column = "F")]
+    public string DaughterFileIdentifier
+    {
+        get => _daughterFileIdentifier;
+        set
+        {
+            _daughterFileIdentifier = value;
+            OnPropertyChanged();
+        }
+    }
 
     private DateTime? _validationDate;
 
     [Name("Date de validation")]
+    [Column(Column = "G")]
     [Format("yyyy-MM-dd", "dd/MM/yyyy")]
     public DateTime? ValidationDate
     {
@@ -92,6 +112,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private DateTime? _auditDate;
 
     [Name("Date de vérification")]
+    [Column(Column = "H")]
     [Format("yyyy-MM-dd", "dd/MM/yyyy")]
     public DateTime? AuditDate
     {
@@ -106,6 +127,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private DateTime? _dateOfCreation;
 
     [Name("Date de création")]
+    [Column(Column = "I")]
     [Format("yyyy-MM-dd", "dd/MM/yyyy")]
     public DateTime? DateOfCreation
     {
@@ -120,6 +142,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private DateTime? _dateOfResumption;
 
     [Name("Date de reprise")]
+    [Column(Column = "J")]
     [Format("yyyy-MM-dd HH:mm:ss.fff", "yyyy-MM-dd HH:mm:ss.ff", "yyyy-MM-dd HH:mm:ss.f", "yyyy-MM-dd HH:mm:ss")]
     public DateTime? DateOfResumption
     {
@@ -134,6 +157,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private DateTime? _expectedResumptionDate;
 
     [Name("Date de reprise attendue")]
+    [Column(Column = "K")]
     [Format("yyyy-MM-dd HH:mm:ss.fff", "yyyy-MM-dd HH:mm:ss.ff", "yyyy-MM-dd HH:mm:ss.f", "yyyy-MM-dd HH:mm:ss")]
     public DateTime? ExpectedResumptionDate
     {
@@ -148,6 +172,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private bool _seriousMisconduct;
 
     [Name("Manquement grave")]
+    [Column(Column = "L")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool SeriousMisconduct
     {
@@ -162,6 +187,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private bool _billingToBeCorrected;
 
     [Name("Facturation à corriger ")]
+    [Column(Column = "M")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool BillingToBeCorrected
     {
@@ -176,6 +202,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private bool _securityToBeFixed;
 
     [Name("Sécurité à corriger ")]
+    [Column(Column = "N")]
     [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
     public bool SecurityToBeFixed
     {
@@ -190,6 +217,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _entity = string.Empty;
 
     [Name("Entité")]
+    [Column(Column = "O")]
     public string Entity
     {
         get => _entity;
@@ -203,6 +231,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _infraEntity = string.Empty;
 
     [Name("Infra-Entité")]
+    [Column(Column = "P")]
     public string InfraEntity
     {
         get => _infraEntity;
@@ -216,6 +245,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _provider = string.Empty;
 
     [Name("Fournisseur")]
+    [Column(Column = "Q")]
     public string Provider
     {
         get => _provider;
@@ -229,6 +259,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _groupSupplier = string.Empty;
 
     [Name("Fournisseur groupe")]
+    [Column(Column = "R")]
     public string GroupSupplier
     {
         get => _groupSupplier;
@@ -242,6 +273,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _domain = string.Empty;
 
     [Name("Domaine")]
+    [Column(Column = "S")]
     public string Domain
     {
         get => _domain;
@@ -255,6 +287,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _subdomain = string.Empty;
 
     [Name("Sous-domaine")]
+    [Column(Column = "T")]
     public string Subdomain
     {
         get => _subdomain;
@@ -268,6 +301,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private string _typeOfBenefit = string.Empty;
 
     [Name("Type de prestation")]
+    [Column(Column = "U")]
     public string TypeOfBenefit
     {
         get => _typeOfBenefit;
@@ -281,6 +315,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
     private float _tiencTct;
 
     [Name("TIENC / TCT")]
+    [Column(Column = "V")]
     public float TiencTct
     {
         get => _tiencTct;
