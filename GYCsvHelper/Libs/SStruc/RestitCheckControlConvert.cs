@@ -2,13 +2,14 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using CsvHelper.Configuration.Attributes;
+using Libs.CsvReader;
 
 namespace Libs.SStruc;
 
-public class RestitCheckControlConvert : INotifyPropertyChanged
+public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 {
     private readonly PropertyInfo[] _propsMain;
-    
+
     private string _fileId = string.Empty;
 
     [Name("Identifiant fiche")]
@@ -290,32 +291,26 @@ public class RestitCheckControlConvert : INotifyPropertyChanged
         }
     }
 
-    private void OnPropertyChanged([CallerMemberName] string? name=null) 
+    private void OnPropertyChanged([CallerMemberName] string? name = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-    public RestitCheckControlConvert(RestitCheckControl restitCheckControl)
-    {
-        _propsMain = GetType().GetProperties();
-        var instance = this;
-        SetValue(restitCheckControl, instance);
-    }
-    
     public RestitCheckControlConvert()
     {
         _propsMain = GetType().GetProperties();
     }
 
-    private void SetValue(RestitCheckControl restitCheckControl, RestitCheckControlConvert instance)
+    public void ConvertInit(object record, IConvert instance) => SetValue((RestitCheckControl)record);
+
+    private void SetValue(RestitCheckControl restitCheckControl)
     {
         foreach (var prop in _propsMain)
         {
             if (!_propsMain.Contains(prop)) continue;
 
-            var value = typeof(RestitCheckControl).GetProperty(prop.Name)?.GetValue(restitCheckControl, null);
-            instance.GetType().GetProperty(prop.Name)?.SetValue(null, value);
+            var value = restitCheckControl.GetType().GetProperty(prop.Name)?.GetValue(restitCheckControl, null);
+            GetType().GetProperty(prop.Name)?.SetValue(this, value);
         }
     }
-    
+
     public event PropertyChangedEventHandler? PropertyChanged;
-    
 }
