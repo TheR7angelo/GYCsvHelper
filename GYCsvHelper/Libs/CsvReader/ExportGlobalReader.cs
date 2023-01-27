@@ -12,7 +12,7 @@ public class ExportGlobalReader : IReader, IDisposable
 
     private SFilePath FileInfo { get; set; }
 
-    private const string BaseName = "ExportGlobal";
+    private const string BaseName = "ExportGlobal_";
 
     public ExportGlobalReader(string filePath)
     {

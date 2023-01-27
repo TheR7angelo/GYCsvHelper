@@ -325,7 +325,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
             OnPropertyChanged();
         }
     }
-
+    
     public RestitCheckControlConvert()
     {
         _propsMain = GetType().GetProperties();
