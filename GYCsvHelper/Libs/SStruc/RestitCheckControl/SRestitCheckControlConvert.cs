@@ -1,11 +1,15 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using CsvHelper.Configuration.Attributes;
+using Libs.CsvReader;
 
 namespace Libs.SStruc;
 
-public class RestitCheckControl : INotifyPropertyChanged
+public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 {
+    private readonly PropertyInfo[] _propsMain;
+
     private string _fileId = string.Empty;
 
     [Name("Identifiant fiche")]
@@ -139,7 +143,7 @@ public class RestitCheckControl : INotifyPropertyChanged
 
     [Name("Date de reprise")]
     [Column(Column = "J")]
-    [Format("yyyy-MM-dd HH:mm:ss.fff", "yyyy-MM-dd HH:mm:ss.ff", "yyyy-MM-dd HH:mm:ss.f", "yyyy-MM-dd HH:mm:ss")]
+    [Format("yyyy-MM-dd HH:mm:ss")]
     public DateTime? DateOfResumption
     {
         get => _dateOfResumption;
@@ -154,7 +158,7 @@ public class RestitCheckControl : INotifyPropertyChanged
 
     [Name("Date de reprise attendue")]
     [Column(Column = "K")]
-    [Format("yyyy-MM-dd HH:mm:ss.fff", "yyyy-MM-dd HH:mm:ss.ff", "yyyy-MM-dd HH:mm:ss.f", "yyyy-MM-dd HH:mm:ss")]
+    [Format("yyyy-MM-dd HH:mm:ss")]
     public DateTime? ExpectedResumptionDate
     {
         get => _expectedResumptionDate;
@@ -310,7 +314,7 @@ public class RestitCheckControl : INotifyPropertyChanged
 
     private float _tiencTct;
 
-    [Name("TIENC / TCT"), CultureInfo("FR-fr")]
+    [Name("TIENC / TCT")]
     [Column(Column = "V")]
     public float TiencTct
     {
@@ -322,217 +326,25 @@ public class RestitCheckControl : INotifyPropertyChanged
         }
     }
 
-    private bool _countedInTheSample;
-
-    [Name("Compté dans l'échantillon")]
-    [Column(Column = "W")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool CountedInTheSample
+    public RestitCheckControlConvert()
     {
-        get => _countedInTheSample;
-        set
-        {
-            _countedInTheSample = value;
-            OnPropertyChanged();
-        }
+        _propsMain = GetType().GetProperties();
     }
 
-    private string _validationComment = string.Empty;
+    public void ConvertInit(object record, IConvert instance) => SetValue((RestitCheckControl)record);
 
-    [Name("Commentaire validation")]
-    [Column(Column = "X")]
-    public string ValidationComment
+    private void SetValue(RestitCheckControl restitCheckControl)
     {
-        get => _validationComment;
-        set
+        foreach (var prop in _propsMain)
         {
-            _validationComment = value;
-            OnPropertyChanged();
-        }
-    }
+            if (!_propsMain.Contains(prop)) continue;
 
-    private string _commentTakenUp = string.Empty;
-
-    [Name("Commentaire reprise")]
-    [Column(Column = "Y")]
-    public string CommentTakenUp
-    {
-        get => _commentTakenUp;
-        set
-        {
-            _commentTakenUp = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private string _analyticalResult = string.Empty;
-
-    [Name("Resultat d'analyse")]
-    [Column(Column = "Z")]
-    public string AnalyticalResult
-    {
-        get => _analyticalResult;
-        set
-        {
-            _analyticalResult = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _times;
-
-    [Name("DELAIS")]
-    [Column(Column = "AA")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Times
-    {
-        get => _times;
-        set
-        {
-            _times = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _realTimeEcvhangesWithOrange;
-
-    [Name("ECHANGES EN TEMPS REEL AVEC ORANGE")]
-    [Column(Column = "AB")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool RealTimeEcvhangesWithOrange
-    {
-        get => _realTimeEcvhangesWithOrange;
-        set
-        {
-            _realTimeEcvhangesWithOrange = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _complianceWithTheDelegationFramewprk;
-
-    [Name("RESPECT DU CADRE DE DELEGATION")]
-    [Column(Column = "AC")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool ComplianceWithTheDelegationFramewprk
-    {
-        get => _complianceWithTheDelegationFramewprk;
-        set
-        {
-            _complianceWithTheDelegationFramewprk = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _safety;
-
-    [Name("SECURITE")]
-    [Column(Column = "AD")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Safety
-    {
-        get => _safety;
-        set
-        {
-            _safety = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _damageToStructures;
-
-    [Name("DOMMAGES AUX OUVRAGES")]
-    [Column(Column = "AE")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool DamageToStructures
-    {
-        get => _damageToStructures;
-        set
-        {
-            _damageToStructures = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _technicalCompliabce;
-
-    [Name("CONFORMITE TECHNIQUE")]
-    [Column(Column = "AF")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool TechnicalCompliabce
-    {
-        get => _technicalCompliabce;
-        set
-        {
-            _technicalCompliabce = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _postWorkDocumentation;
-
-    [Name("DOCUMENTATION APRES TRAVAUX")]
-    [Column(Column = "AG")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool PostWorkDocumentation
-    {
-        get => _postWorkDocumentation;
-        set
-        {
-            _postWorkDocumentation = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _invoicing;
-
-    [Name("FACTURATION")]
-    [Column(Column = "AH")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Invoicing
-    {
-        get => _invoicing;
-        set
-        {
-            _invoicing = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _customerRelationsThirdPartiesAndCommunities;
-
-    [Name("RELATION CLIENTS, TIERS ET COLLECTIVITES")]
-    [Column(Column = "AI")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool CustomerRelationsThirdPartiesAndCommunities
-    {
-        get => _customerRelationsThirdPartiesAndCommunities;
-        set
-        {
-            _customerRelationsThirdPartiesAndCommunities = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private bool _environment;
-
-    [Name("ENVIRONNEMENT")]
-    [Column(Column = "AJ")]
-    [BooleanTrueValues("OUI"), BooleanFalseValues("NON")]
-    public bool Environment
-    {
-        get => _environment;
-        set
-        {
-            _environment = value;
-            OnPropertyChanged();
+            var value = restitCheckControl.GetType().GetProperty(prop.Name)?.GetValue(restitCheckControl, null);
+            GetType().GetProperty(prop.Name)?.SetValue(this, value);
         }
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    private void OnPropertyChanged([CallerMemberName] string? name = null)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }
