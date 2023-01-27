@@ -52,7 +52,7 @@ public class RestitCheckControlReader : IReader, IDisposable
 
     public void Write<T>(IEnumerable<T> records)
     {
-        using var writer = new StreamWriter(FileSavePath, Encoding.Latin1, new FileStreamOptions { Access = FileAccess.Write });
+        using var writer = new StreamWriter(FileSavePath, false, Encoding.Latin1);
         using var csv = new CsvWriter(writer, Common.GetConfigurationWriter);
 
         csv.WriteRecords(records);
@@ -61,7 +61,7 @@ public class RestitCheckControlReader : IReader, IDisposable
     public List<T> Convert<T>(List<object> records)
     {
         var result = new List<T>();
-        foreach (RestitCheckControl record in records)
+        foreach (var record in records)
         {
             var convert = (IConvert)Activator.CreateInstance(typeof(T))!;
             convert.ConvertInit(record, convert);
