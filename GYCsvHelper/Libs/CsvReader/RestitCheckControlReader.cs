@@ -8,7 +8,7 @@ public class RestitCheckControlReader : IReader, IDisposable
 {
     private string FilePath { get; }
     private string FileTmp { get; }
-    private string FileSavePath { get; }
+    private string FileSavePath { get; set;  }
     
     private SFilePath FileInfo { get; }
 
@@ -22,6 +22,8 @@ public class RestitCheckControlReader : IReader, IDisposable
         FileSavePath = FileInfo.GetSavePath(BaseName);
         FileTmp = Path.GetTempFileName();
     }
+
+    public void SetSavePath(string filePath) => FileSavePath = filePath;
 
     public void CleanFirstRow(int row, bool keepHeader)
     {

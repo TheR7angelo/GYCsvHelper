@@ -78,6 +78,8 @@ public class ExportGlobalReader : IReader, IDisposable
         csv.WriteRecords(records);
     }
 
+    public void SetSavePath(string filePath) => FileSavePath = filePath;
+
     public List<T> Convert<T>(List<object> records)
     {
         var result = new List<T>();
