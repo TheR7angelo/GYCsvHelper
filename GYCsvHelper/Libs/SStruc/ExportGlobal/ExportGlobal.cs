@@ -4,7 +4,7 @@ using CsvHelper.Configuration.Attributes;
 
 namespace Libs.SStruc;
 
-public struct SExportGlobal : INotifyPropertyChanged
+public class ExportGlobal : INotifyPropertyChanged
 {
     private string _creatorType = string.Empty;
 
@@ -1439,7 +1439,7 @@ public struct SExportGlobal : INotifyPropertyChanged
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-    public SExportGlobal()
+    public ExportGlobal()
     {
     }
 }
