@@ -1,6 +1,6 @@
 ﻿using Ookii.Dialogs.Wpf;
 
-namespace MetroWindow.Function;
+namespace GYCsvHelper.Function;
 
 public static class GetPath
 {

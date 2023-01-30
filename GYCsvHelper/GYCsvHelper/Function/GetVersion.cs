@@ -7,7 +7,7 @@ using Ookii.Dialogs.Wpf;
 using Syroot.Windows.IO;
 using UpdateManager;
 
-namespace MetroWindow.Function;
+namespace GYCsvHelper.Function;
 
 public static class GetVersion
 {

@@ -5,7 +5,7 @@ using Libs.CsvReader;
 using Libs.SStruc;
 using Microsoft.Win32;
 
-namespace MetroWindow
+namespace GYCsvHelper
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,9 +27,10 @@ namespace MetroWindow
             }
 
             LabelVersion.Content = Function.AssemblyCl.GetVersionDeploy().ToString();
+            Title = Function.AssemblyCl.GetNameDeploy();
         }
 
-        private async void ButtonExportFiche_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonExportFiche_OnClick(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog { Filter = "CSV (séparateur : point-virgule) (*.csv) | *.csv" };
             if (!dialog.ShowDialog().Equals(true)) return;
@@ -42,7 +43,7 @@ namespace MetroWindow
             };
             if (!savePathDialog.ShowDialog().Equals(true)) return;
             
-            using var worker = new Libs.CsvReader.RestitCheckControlReader(dialog.FileName);
+            using var worker = new RestitCheckControlReader(dialog.FileName);
             worker.SetSavePath(savePathDialog.FileName);
             
             worker.CleanFirstRow(14, false);
