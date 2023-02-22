@@ -2,7 +2,7 @@
 using System.Text;
 using CsvHelper.Configuration;
 
-namespace Libs.CsvReader;
+namespace Libs.ExportGlobal.CsvReader;
 
 public static class Common
 {

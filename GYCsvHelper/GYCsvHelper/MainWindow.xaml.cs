@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using Libs.CsvReader;
-using Libs.SStruc;
+using Libs.ExportGlobal.CsvReader;
+using Libs.ExportGlobal.SStruc;
 using Microsoft.Win32;
 
 namespace GYCsvHelper

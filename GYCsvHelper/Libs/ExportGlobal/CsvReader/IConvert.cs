@@ -1,4 +1,4 @@
-﻿namespace Libs.CsvReader;
+﻿namespace Libs.ExportGlobal.CsvReader;
 
 public interface IConvert
 {

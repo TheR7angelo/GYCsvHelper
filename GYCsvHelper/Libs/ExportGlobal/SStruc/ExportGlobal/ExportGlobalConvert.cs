@@ -2,9 +2,9 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using CsvHelper.Configuration.Attributes;
-using Libs.CsvReader;
+using Libs.ExportGlobal.CsvReader;
 
-namespace Libs.SStruc;
+namespace Libs.ExportGlobal.SStruc;
 
 public class ExportGlobalConvert : INotifyPropertyChanged, IConvert
 {

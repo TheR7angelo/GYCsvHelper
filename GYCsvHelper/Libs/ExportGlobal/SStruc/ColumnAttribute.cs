@@ -1,4 +1,4 @@
-﻿namespace Libs.SStruc;
+﻿namespace Libs.ExportGlobal.SStruc;
 
 [AttributeUsage(AttributeTargets.Property, Inherited = false)]
 public class ColumnAttribute : Attribute
