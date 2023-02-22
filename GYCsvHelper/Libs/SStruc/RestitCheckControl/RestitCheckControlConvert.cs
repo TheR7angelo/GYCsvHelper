@@ -98,7 +98,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 
     [Name("Date de validation")]
     [Column(Column = "G")]
-    [Format("yyyy-MM-dd", "dd/MM/yyyy")]
+    [Format("yyyy/MM/dd", "dd/MM/yyyy")]
     public DateTime? ValidationDate
     {
         get => _validationDate;
@@ -113,7 +113,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 
     [Name("Date de vérification")]
     [Column(Column = "H")]
-    [Format("yyyy-MM-dd", "dd/MM/yyyy")]
+    [Format("yyyy/MM/dd", "dd/MM/yyyy")]
     public DateTime? AuditDate
     {
         get => _auditDate;
@@ -128,7 +128,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 
     [Name("Date de création")]
     [Column(Column = "I")]
-    [Format("yyyy-MM-dd", "dd/MM/yyyy")]
+    [Format("yyyy/MM/dd", "dd/MM/yyyy")]
     public DateTime? DateOfCreation
     {
         get => _dateOfCreation;
@@ -143,7 +143,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 
     [Name("Date de reprise")]
     [Column(Column = "J")]
-    [Format("yyyy-MM-dd HH:mm:ss")]
+    [Format("yyyy/MM/dd HH:mm:ss")]
     public DateTime? DateOfResumption
     {
         get => _dateOfResumption;
@@ -158,7 +158,7 @@ public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 
     [Name("Date de reprise attendue")]
     [Column(Column = "K")]
-    [Format("yyyy-MM-dd HH:mm:ss")]
+    [Format("yyyy/MM/dd HH:mm:ss")]
     public DateTime? ExpectedResumptionDate
     {
         get => _expectedResumptionDate;
