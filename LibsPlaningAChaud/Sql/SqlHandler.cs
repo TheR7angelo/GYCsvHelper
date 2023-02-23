@@ -1,7 +1,7 @@
-﻿using Libs.PlaningAChaud.CsvReader;
-using Libs.PlaningAChaud.Sql.Struc;
+﻿using LibsPlaningAChaud.CsvReader;
+using LibsPlaningAChaud.Sql.Struc;
 
-namespace Libs.PlaningAChaud.Sql;
+namespace LibsPlaningAChaud.Sql;
 
 public class SqlHandler
 {

@@ -1,7 +1,7 @@
-﻿using Libs.PlaningAChaud.Sql.Struc;
+﻿using LibsPlaningAChaud.Sql.Struc;
 using OfficeOpenXml;
 
-namespace Libs.PlaningAChaud.Excel;
+namespace LibsPlaningAChaud.Excel;
 
 public class ExcelHandler
 {
@@ -10,7 +10,7 @@ public class ExcelHandler
     {
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-        var path = Path.GetFullPath("GYCsvHelper/Libs/PlaningAChaud/Excel/PLANNING VQSE A CHAUD DOSO Z2.xlsx");
+        var path = Path.GetFullPath("PlaningAChaud/Excel/PLANNING VQSE A CHAUD DOSO Z2.xlsx");
         Workbook = new ExcelPackage(path);
     }
 

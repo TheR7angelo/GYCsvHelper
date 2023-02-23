@@ -1,6 +1,6 @@
 ﻿using System.Data.SQLite;
 
-namespace Libs.PlaningAChaud.Sql;
+namespace LibsPlaningAChaud.Sql;
 
 public class SqLite
 {

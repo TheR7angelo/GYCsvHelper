@@ -1,4 +1,4 @@
-﻿namespace Libs.PlaningAChaud.CsvReader;
+﻿namespace LibsPlaningAChaud.CsvReader;
 
 public enum EActivite
 {

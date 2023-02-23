@@ -1,25 +1,15 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using CsvHelper.Configuration.Attributes;
 
-namespace Libs.PlaningAChaud.Sql.Struc;
+namespace LibsPlaningAChaud.CsvReader;
 
-public class VProdData
+public class ExportInterventionCsv : INotifyPropertyChanged
 {
-    private int _id;
+    private int _activity;
 
-    public int Id
-    {
-        get => _id;
-        set
-        {
-            _id = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private string _activity = string.Empty;
-    
-    public string Activity
+    [Optional]
+    public int Activity
     {
         get => _activity;
         set
@@ -28,22 +18,11 @@ public class VProdData
             OnPropertyChanged();
         }
     }
-
-    private string _onglet = string.Empty;
-
-    public string Onglet
-    {
-        get => _onglet;
-        set
-        {
-            _onglet = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private string? _typeInter;
     
-    public string? TypeInter
+    private string _typeInter = string.Empty;
+
+    [Name("Type inter.")]
+    public string TypeInter
     {
         get => _typeInter;
         set
@@ -53,8 +32,9 @@ public class VProdData
         }
     }
     
-    private string? _nd;
-    public string? Nd
+    private string _nd = string.Empty;
+    [Name("ND")]
+    public string Nd
     {
         get => _nd;
         set
@@ -64,8 +44,9 @@ public class VProdData
         }
     }
     
-    private string? _planifFt;
-    public string? PlanifFt
+    private string _planifFt = string.Empty;
+    [Name("Planif FT")]
+    public string PlanifFt
     {
         get => _planifFt;
         set
@@ -75,8 +56,9 @@ public class VProdData
         }
     }
 
-    private string? _ui;
-    public string? Ui
+    private string _ui = string.Empty;
+    [Name("UI")]
+    public string Ui
     {
         get => _ui;
         set
@@ -86,8 +68,9 @@ public class VProdData
         }
     }
     
-    private string? _actProd;
-    public string? ActProd
+    private string _actProd = string.Empty;
+    [Name("Act/Prod")]
+    public string ActProd
     {
         get => _actProd;
         set
@@ -97,8 +80,9 @@ public class VProdData
         }
     }
     
-    private string? _client;
-    public string? Client
+    private string _client = string.Empty;
+    [Name("Client")]
+    public string Client
     {
         get => _client;
         set
@@ -108,8 +92,9 @@ public class VProdData
         }
     }
     
-    private string? _adresse;
-    public string? Adresse
+    private string _adresse = string.Empty;
+    [Name("Adresse")]
+    public string Adresse
     {
         get => _adresse;
         set
@@ -119,8 +104,9 @@ public class VProdData
         }
     }
     
-    private string? _postalCode;
-    public string? PostalCode
+    private string _postalCode = string.Empty;
+    [Name("CP")]
+    public string PostalCode
     {
         get => _postalCode;
         set
@@ -130,37 +116,14 @@ public class VProdData
         }
     }
     
-    private string? _villeSite;
-    public string? VilleSite
+    private string _villeSite = string.Empty;
+    [Name("Ville site")]
+    public string VilleSite
     {
         get => _villeSite;
         set
         {
             _villeSite = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private string? _contact;
-
-    public string? Contact
-    {
-        get => _contact;
-        set
-        {
-            _contact = value;
-            OnPropertyChanged();
-        }
-    }
-
-    private string? _escaladeN1;
-
-    public string? EscaladeN1
-    {
-        get => _escaladeN1;
-        set
-        {
-            _escaladeN1 = value;
             OnPropertyChanged();
         }
     }

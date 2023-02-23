@@ -1,7 +1,6 @@
 ﻿using System.Text;
-using Libs.ExportGlobal.CsvReader;
 
-namespace Libs.PlaningAChaud.CsvReader;
+namespace LibsPlaningAChaud.CsvReader;
 
 public static class Reader
 {

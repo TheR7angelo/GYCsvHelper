@@ -1,4 +1,4 @@
-﻿namespace Libs.PlaningAChaud.Sql.Struc;
+﻿namespace LibsPlaningAChaud.Sql.Struc;
 
 public struct SActivite
 {
