@@ -2,14 +2,14 @@
 using LibsPlaningAChaud.Excel;
 using LibsPlaningAChaud.Sql;
 
-namespace TestProject1.PlaningAChaud;
+namespace TestProject1.PlaningAChaudTest;
 
 public class Test
 {
     [Fact]
     private void TestRead()
     {
-        var db = Path.GetFullPath("LibsPlaningAChaud/Sql/data.sqlite");
+        var db = Path.GetFullPath("Sql/data.sqlite");
         
         const string file = "C:\\Users\\ZP6177\\Downloads\\Nouveau dossier\\export_interventions.csv";
         const EActivite activity = EActivite.ProdGpCu;
@@ -20,9 +20,9 @@ public class Test
         sqlHandler.ImportRows(rowsCsv);
         var rowsSql = sqlHandler.GetRows();
 
-        var excelHandle = new ExcelHandler();
-        excelHandle.WriteRows(rowsSql);
-
-        excelHandle.Save();
+        var excelHandler = new ExcelHandler();
+        excelHandler.WriteRows(rowsSql);
+        
+        excelHandler.Save();
     }
 }

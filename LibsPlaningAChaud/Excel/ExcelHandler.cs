@@ -5,13 +5,13 @@ namespace LibsPlaningAChaud.Excel;
 
 public class ExcelHandler
 {
-    private ExcelPackage Workbook;
+    private readonly ExcelPackage _workbook;
     public ExcelHandler()
     {
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-        var path = Path.GetFullPath("PlaningAChaud/Excel/PLANNING VQSE A CHAUD DOSO Z2.xlsx");
-        Workbook = new ExcelPackage(path);
+        var path = Path.GetFullPath("Excel/PLANNING VQSE A CHAUD DOSO Z2.xlsx");
+        _workbook = new ExcelPackage(path);
     }
 
     public void WriteRows(IEnumerable<VProdData> rows)
@@ -42,10 +42,10 @@ public class ExcelHandler
     }
 
     private ExcelWorksheet GetWorksheet(string sheetName) 
-        => Workbook.Workbook.Worksheets[sheetName];
+        => _workbook.Workbook.Worksheets[sheetName];
 
     public void Save()
     {
-        Workbook.SaveAs("test.xlsx");
+        _workbook.SaveAs("test.xlsx");
     }
 }
