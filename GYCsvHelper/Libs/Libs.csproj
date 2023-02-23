@@ -8,10 +8,23 @@
 
     <ItemGroup>
       <PackageReference Include="CsvHelper" Version="30.0.1" />
+      <PackageReference Include="EPPlus" Version="6.1.2" />
+      <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="ExportGlobal" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="PlaningAChaud\Excel\PLANNING VQSE A CHAUD DOSO Z2.xlsx" />
+      <AdditionalFiles Include="PlaningAChaud\Excel\PLANNING VQSE A CHAUD DOSO Z2.xlsx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <None Remove="PlaningAChaud\data.sqlite" />
+      <AdditionalFiles Include="PlaningAChaud\data.sqlite">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AdditionalFiles>
     </ItemGroup>
 
 </Project>
