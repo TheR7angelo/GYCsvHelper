@@ -74,7 +74,7 @@ public class SqlHandler
 
     public IEnumerable<Contact> GetAllContact()
     {
-        const string cmd = "SELECT * FROM t_contact";
+        const string cmd = "SELECT * FROM t_contact ORDER BY nom";
 
         var result = new List<Contact>();
         var reader = _sqLite.ExecuteReader(cmd);
@@ -83,7 +83,8 @@ public class SqlHandler
             result.Add(new Contact
             {
                 Id = int.Parse(reader["id"].ToString()!),
-                Name = reader["nom"].ToString()!,
+                LastName = reader["nom"].ToString()!,
+                FirstName = reader["prenom"].ToString()!,
                 Number = reader["numbers"].ToString()!
             });
         }
