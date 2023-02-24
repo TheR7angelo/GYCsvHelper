@@ -5,6 +5,7 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:local="clr-namespace:GYCsvHelper"
+                 xmlns:userControls="clr-namespace:GYCsvHelper.UserControls"
                  mc:Ignorable="d"
 
                  TitleCharacterCasing="Normal"
@@ -35,16 +36,28 @@
         </Grid.RowDefinitions>
 
         <!-- Body -->
-        <Grid x:Name="GridBody" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <TabControl Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TabItem x:Name="TabItemButton" Visibility="Collapsed">
+                <Grid>
+                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Content="Compile Csv" Margin="3" Click="ButtonCompilCsv_OnClick"/>
+                        <Button Content="Planing à chaud" Margin="3" Click="ButtonPlaningChaud_OnClick" />
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabItemFrame" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-            <Button Grid.Column="0" Content="Export fiche brut" Height="155" Width="155" Click="ButtonExportFiche_OnClick" />
-            <Button Grid.Column="2" Content="Export fiches global" Height="155" Width="155" Click="ButtonFichesGlobal_OnClick" />
-        </Grid>
+                    <Button Grid.Row="0" Content="Retours" Click="ButtonBack_OnClick" />
+                    <Frame Grid.Row="1" x:Name="FrameMain" NavigationUIVisibility="Hidden" />
+
+                </Grid>
+            </TabItem>
+        </TabControl>
 
         <!-- Footer -->
         <Grid x:Name="GridFooter" Grid.Row="1">
