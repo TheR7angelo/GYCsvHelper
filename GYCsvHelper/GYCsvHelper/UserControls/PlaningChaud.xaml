@@ -24,10 +24,14 @@
         <Button Grid.Row="0" Grid.Column="2" Content="PROD FTTH" Click="ButtonProdFtth_OnClick" Margin="3" />
         <Button Grid.Row="0" Grid.Column="3" Content="SAVBL" Click="ButtonSavbl_OnClick" Margin="3" />
 
-        <CheckBox Grid.Row="1" Grid.Column="0" x:Name="CheckBoxProdr10" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <CheckBox Grid.Row="1" Grid.Column="1" x:Name="CheckBoxSavgp" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <CheckBox Grid.Row="1" Grid.Column="2" x:Name="CheckBoxProdFtth" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <CheckBox Grid.Row="1" Grid.Column="3" x:Name="CheckBoxSavbl" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Grid.Row="1" Grid.Column="0" x:Name="CheckBoxProdr10" IsHitTestVisible="False"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Grid.Row="1" Grid.Column="1" x:Name="CheckBoxSavgp" IsHitTestVisible="False"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Grid.Row="1" Grid.Column="2" x:Name="CheckBoxProdFtth" IsHitTestVisible="False"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Grid.Row="1" Grid.Column="3" x:Name="CheckBoxSavbl" IsHitTestVisible="False"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Content="Export" Click="ButtonExport_OnClick"
                 Margin="3" />
