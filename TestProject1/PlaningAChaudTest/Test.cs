@@ -1,4 +1,5 @@
-﻿using LibsPlaningAChaud.CsvReader;
+﻿using System.Globalization;
+using LibsPlaningAChaud.CsvReader;
 using LibsPlaningAChaud.Excel;
 using LibsPlaningAChaud.Sql;
 
@@ -22,7 +23,15 @@ public class Test
 
         var excelHandler = new ExcelHandler();
         excelHandler.WriteRows(rowsSql);
+
+        var myCi = new CultureInfo("fr-FR");
+        var myCal = myCi.Calendar;
+        var myCwr = myCi.DateTimeFormat.CalendarWeekRule;
+        var myFirstDow = myCi.DateTimeFormat.FirstDayOfWeek;
+
+        var d = myCal.GetWeekOfYear(DateTime.Now, myCwr, myFirstDow);
+        var defaultName = $"PLANNING VQSE A CHAUD DOSO Z2 S{d}";
         
-        excelHandler.Save();
+        excelHandler.Save($"{defaultName}.xlsx");
     }
 }
