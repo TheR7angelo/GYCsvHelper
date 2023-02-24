@@ -22,12 +22,12 @@ public class SqlHandler
         """;
         _sqLite.Execute(cmd);
     }
-    
+
     public void ImportRows(IEnumerable<ExportInterventionCsv> rows, EActivite activity)
     {
         var cmdClear = $"DELETE FROM t_prod_data WHERE activite = {(int)activity}";
         _sqLite.Execute(cmdClear);
-        
+
         const string cmdStr = """
             INSERT INTO t_prod_data (activite, type_inter, nd, planif_fT, ui, act_prod, client, adresse, code_postal, ville_site)
             VALUES ({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')
@@ -35,7 +35,8 @@ public class SqlHandler
         foreach (var row in rows)
         {
             var cmd = string.Format(cmdStr, row.Activity, _sqLite.SqlNull(row.TypeInter), _sqLite.SqlNull(row.Nd),
-                _sqLite.SqlNull(row.PlanifFt), _sqLite.SqlNull(row.Ui), _sqLite.SqlNull(row.ActProd), _sqLite.SqlNull(row.Client),
+                _sqLite.SqlNull(row.PlanifFt), _sqLite.SqlNull(row.Ui), _sqLite.SqlNull(row.ActProd),
+                _sqLite.SqlNull(row.Client),
                 _sqLite.SqlNull(row.Adresse), _sqLite.SqlNull(row.PostalCode), _sqLite.SqlNull(row.VilleSite));
             _sqLite.Execute(cmd);
         }
@@ -65,6 +66,25 @@ public class SqlHandler
                 VilleSite = reader["ville_site"].ToString(),
                 Contact = reader["contact"].ToString(),
                 EscaladeN1 = reader["escalade_n1"].ToString()
+            });
+        }
+
+        return result;
+    }
+
+    public IEnumerable<Contact> GetAllContact()
+    {
+        const string cmd = "SELECT * FROM t_contact";
+
+        var result = new List<Contact>();
+        var reader = _sqLite.ExecuteReader(cmd);
+        while (reader.Read())
+        {
+            result.Add(new Contact
+            {
+                Id = int.Parse(reader["id"].ToString()!),
+                Name = reader["nom"].ToString()!,
+                Number = reader["numbers"].ToString()!
             });
         }
 
