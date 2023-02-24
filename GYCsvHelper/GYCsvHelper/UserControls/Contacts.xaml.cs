@@ -1,4 +1,4 @@
-﻿using System.Windows.Data;
+﻿using System.Collections.ObjectModel;
 using LibsPlaningAChaud.Sql;
 using LibsPlaningAChaud.Sql.Struc;
 
@@ -9,14 +9,15 @@ public partial class Contacts
     private SqlHandler _sqlHandler;
     private Contact _contactSelected;
 
-    private CollectionView _collectionContacts;
+    public ObservableCollection<Contact> CollectionContacts { get; } = new();
+
     public Contacts(SqlHandler sqlHandler)
     {
         InitializeComponent();
         _sqlHandler = sqlHandler;
         _contactSelected = new Contact();
 
-        var contact = sqlHandler.GetAllContact();
-        _collectionContacts = new CollectionView(contact);
+        var contacts = sqlHandler.GetAllContact();
+        foreach (var contact in contacts) CollectionContacts.Add(contact);
     }
 }
