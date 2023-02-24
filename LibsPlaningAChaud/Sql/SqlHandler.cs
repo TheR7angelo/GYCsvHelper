@@ -91,4 +91,16 @@ public class SqlHandler
 
         return result;
     }
+
+    public void UpdateCantact(Contact contact)
+    {
+        var cmd =
+            $"""
+            UPDATE t_contact SET nom='{contact.LastName}',
+                                 prenom='{contact.FirstName}',
+                                 numbers='{contact.Number}'
+                             WHERE id={contact.Id};
+            """;
+        _sqLite.Execute(cmd);
+    }
 }
