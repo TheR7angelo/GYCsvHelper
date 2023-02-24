@@ -18,7 +18,7 @@ public class Test
         var sqlHandler = new SqlHandler(db);
         var rowsCsv = Reader.Read(file, activity);
 
-        sqlHandler.ImportRows(rowsCsv);
+        sqlHandler.ImportRows(rowsCsv, activity);
         var rowsSql = sqlHandler.GetRows();
 
         var excelHandler = new ExcelHandler();

@@ -22,27 +22,12 @@ public class SqlHandler
         """;
         _sqLite.Execute(cmd);
     }
-
-    // private IEnumerable<SActivite> GetAllActivity()
-    // {
-    //     const string cmd = "SELECT * FROM t_activite;";
-    //
-    //     var result = new List<SActivite>();
-    //     
-    //     var reader = _sqLite.ExecuteReader(cmd);
-    //     while (reader.Read())
-    //     {
-    //         result.Add(new SActivite
-    //         {
-    //             Id = int.Parse(reader["id"].ToString()!),
-    //             Name = reader["nom"].ToString()!
-    //         });
-    //     }
-    //
-    //     return result;
-    // }
-    public void ImportRows(IEnumerable<ExportInterventionCsv> rows)
+    
+    public void ImportRows(IEnumerable<ExportInterventionCsv> rows, EActivite activity)
     {
+        var cmdClear = $"DELETE FROM t_prod_data WHERE activite = {(int)activity}";
+        _sqLite.Execute(cmdClear);
+        
         const string cmdStr = """
             INSERT INTO t_prod_data (activite, type_inter, nd, planif_fT, ui, act_prod, client, adresse, code_postal, ville_site)
             VALUES ({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')
