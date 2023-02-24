@@ -40,7 +40,7 @@
             <TabItem x:Name="TabItemButton" Visibility="Collapsed">
                 <Grid>
                     <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Content="Compile Csv" Margin="3" Click="ButtonCompilCsv_OnClick"/>
+                        <Button Content="Compile Csv" Margin="3" Click="ButtonCompilCsv_OnClick" />
                         <Button Content="Planing à chaud" Margin="3" Click="ButtonPlaningChaud_OnClick" />
                     </WrapPanel>
                 </Grid>
