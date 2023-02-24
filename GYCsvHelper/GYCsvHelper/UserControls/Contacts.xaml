@@ -3,29 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:GYCsvHelper.UserControls"
              mc:Ignorable="d"
-             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+             DataContext="{Binding RelativeSource={RelativeSource Self}, Mode=TwoWay, Path=., UpdateSourceTrigger=PropertyChanged}">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            <ListBox Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" ItemsSource="{Binding CollectionContacts}">
+
+            <ListBox Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"
+                     ItemsSource="{Binding CollectionContacts}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Button Click="ButtonContactName_OnClick">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding LastName}"/>
-                                <TextBlock Text=" "/>
-                                <TextBlock Text="{Binding FirstName}"/>
+                                <TextBlock Text="{Binding LastName}" />
+                                <TextBlock Text=" " />
+                                <TextBlock Text="{Binding FirstName}" />
                             </StackPanel>
                         </Button>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
+            <Line Grid.Column="1" Width="3" Fill="White"/>
+
+            <Grid Grid.Column="2" MinWidth="500" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Nom" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Prenom" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Numéros" />
+
+                <TextBox Grid.Row="0" Grid.Column="1"
+                         Text="{Binding ContactSelected.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="1" Grid.Column="1"
+                         Text="{Binding ContactSelected.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="2" Grid.Column="1"
+                         Text="{Binding ContactSelected.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="ButtonValidChangeContact_OnClick" Content="Valider"/>
+
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
