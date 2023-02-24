@@ -16,7 +16,7 @@
             <ListBox Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" ItemsSource="{Binding CollectionContacts}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Button>
+                        <Button Click="ButtonContactName_OnClick">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding LastName}"/>
                                 <TextBlock Text=" "/>
