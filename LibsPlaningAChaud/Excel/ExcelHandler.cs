@@ -44,8 +44,5 @@ public class ExcelHandler
     private ExcelWorksheet GetWorksheet(string sheetName) 
         => _workbook.Workbook.Worksheets[sheetName];
 
-    public void Save()
-    {
-        _workbook.SaveAs("test.xlsx");
-    }
+    public void Save(string filePath) => _workbook.SaveAs(filePath);
 }
