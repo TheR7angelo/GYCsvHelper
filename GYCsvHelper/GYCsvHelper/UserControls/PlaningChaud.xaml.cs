@@ -88,4 +88,13 @@ public partial class PlaningChaud
             MessageBox.Show("Tous les imports non pas étais éffectuée");
         }
     }
+
+    private void ButtonBack_OnClick(object sender, RoutedEventArgs e) 
+        => TabItemMenu.IsSelected = true;
+
+    private void ButtonContact_OnClick(object sender, RoutedEventArgs e)
+    {
+        FrameContact.Content = new Contacts(_sqlHandler);
+        TabItemContact.IsSelected = true;
+    }
 }
