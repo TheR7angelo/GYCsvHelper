@@ -19,14 +19,26 @@ public class Contact : INotifyPropertyChanged
         }
     }
 
-    private string _name = string.Empty;
+    private string _firstName = string.Empty;
     
-    public string Name
+    public string FirstName
     {
-        get => _name;
+        get => _firstName;
         set
         {
-            _name = value;
+            _firstName = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    private string _lastName = string.Empty;
+    
+    public string LastName
+    {
+        get => _lastName;
+        set
+        {
+            _lastName = value;
             OnPropertyChanged();
         }
     }
