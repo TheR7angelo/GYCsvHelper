@@ -4,8 +4,60 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GYCsvHelper.UserControls"
-             mc:Ignorable="d">
-    <Grid>
+             mc:Ignorable="d"
+             DataContext="{Binding RelativeSource={RelativeSource Self}, Mode=TwoWay, Path=., UpdateSourceTrigger=PropertyChanged}">
+    <Grid Margin="7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <RadioButton Content="PROD GP Cu" Tag="1" Margin="3" Click="ButtonActivity_OnClick"
+                         GroupName="ZoneName"
+                         Style="{StaticResource {x:Type ToggleButton}}"/>
+            <RadioButton Content="SAV GP Cu" Tag="2" Margin="3" Click="ButtonActivity_OnClick"
+                         GroupName="ZoneName"
+                         Style="{StaticResource {x:Type ToggleButton}}"/>
+            <RadioButton Content="PROD FTTH" Tag="3" Margin="3" Click="ButtonActivity_OnClick"
+                         GroupName="ZoneName"
+                         Style="{StaticResource {x:Type ToggleButton}}"/>
+            <RadioButton Content="SAVBL" Tag="4" Margin="3" Click="ButtonActivity_OnClick"
+                         GroupName="ZoneName"
+                         Style="{StaticResource {x:Type ToggleButton}}"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                 ItemsSource="{Binding CollectionZonesDepartment}"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ToggleButton Content="{Binding}" 
+                                  IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"
+                                  Click="ButtonDepartment_OnClick"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         
+        <ListBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                 ItemsSource="{Binding CollectionZones}"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ToggleButton Content="{Binding Ui}" 
+                                  IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"
+                                  Click="ButtonDepartment_OnClick"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </UserControl>
