@@ -7,12 +7,12 @@ public class Contact : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private int _id;
+    private readonly int _id;
 
     public int Id
     {
         get => _id;
-        set
+        init
         {
             _id = value;
             OnPropertyChanged();

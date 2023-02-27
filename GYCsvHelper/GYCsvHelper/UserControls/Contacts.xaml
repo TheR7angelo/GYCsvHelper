@@ -13,23 +13,24 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"
+        <ListBox Grid.Column="0" x:Name="ListBox" VerticalAlignment="Top" HorizontalAlignment="Center"
                  ItemsSource="{Binding CollectionContacts}"
                  ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Click="ButtonContactName_OnClick">
+                    <ToggleButton Click="ButtonContactName_OnClick"
+                                  IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding LastName}" />
                             <TextBlock Text=" " />
                             <TextBlock Text="{Binding FirstName}" />
                         </StackPanel>
-                    </Button>
+                    </ToggleButton>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid Grid.Column="2" MinWidth="500" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Grid.Column="2" x:Name="GridContactDefinition" MinWidth="500" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -46,13 +47,20 @@
             <Label Grid.Row="2" Grid.Column="0" Content="Numéros" />
 
             <TextBox Grid.Row="0" Grid.Column="1"
-                     Text="{Binding ContactSelected.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                     Text="{Binding ContactSelected.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="False" />
+            
             <TextBox Grid.Row="1" Grid.Column="1"
-                     Text="{Binding ContactSelected.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                     Text="{Binding ContactSelected.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="False" />
+            
             <TextBox Grid.Row="2" Grid.Column="1"
-                     Text="{Binding ContactSelected.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Grid.Row="3" Grid.Column="1" Click="ButtonValidChangeContact_OnClick" Content="Valider"
-                    Margin="7" />
+                     Text="{Binding ContactSelected.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     IsEnabled="False"/>
+            
+            <Button Grid.Row="3" Grid.Column="1" x:Name="ButtonValidChangeContact" Click="ButtonValidChangeContact_OnClick" Content="Valider"
+                    Margin="7" 
+                    IsEnabled="False"/>
         </Grid>
     </Grid>
 </UserControl>
