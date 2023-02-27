@@ -49,18 +49,18 @@
                     </Grid>
 
                     <Grid Grid.Column="1" Margin="3">
-                        <Button Content="Contacts" Click="ButtonContact_OnClick"/>
+                        <Button Content="Contacts" Click="ButtonContact_OnClick" />
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItemContact" Visibility="Collapsed">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Content="Retours contact" Click="ButtonBack_OnClick"/>
-                    <Frame Grid.Row="1" x:Name="FrameContact" NavigationUIVisibility="Hidden"></Frame>
+                    <Button Grid.Row="0" Content="Retours contact" Click="ButtonBack_OnClick" />
+                    <Frame Grid.Row="1" x:Name="FrameContact" NavigationUIVisibility="Hidden" />
                 </Grid>
             </TabItem>
 
