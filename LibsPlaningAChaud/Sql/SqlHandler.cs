@@ -122,7 +122,7 @@ public class SqlHandler
 
     public IEnumerable<Zone> GetAllZones()
     {
-        const string cmd = "SELECT * FROM t_prod_zone;";
+        const string cmd = "SELECT * FROM t_prod_zone ORDER BY activite, dept;";
         var reader = _sqLite.ExecuteReader(cmd);
 
         var contact = GetAllContact().ToList();
