@@ -119,4 +119,28 @@ public class SqlHandler
         var cmd = $"DELETE FROM t_contact WHERE id={contact.Id}";
         _sqLite.Execute(cmd);
     }
+
+    public IEnumerable<Zone> GetAllZones()
+    {
+        const string cmd = "SELECT * FROM t_prod_zone;";
+        var reader = _sqLite.ExecuteReader(cmd);
+
+        var contact = GetAllContact().ToList();
+        
+        var result = new List<Zone>();
+        while (reader.Read())
+        {
+            result.Add(new Zone
+            {
+                Id = int.Parse(reader["id"].ToString()!),
+                Activity = (EActivite)int.Parse(reader["activite"].ToString()!),
+                Department = int.Parse(reader["dept"].ToString()!),
+                Ui = reader["ui"].ToString()!,
+                Contact = contact.First(s => s.Id.Equals(int.Parse(reader["contact"].ToString()!))),
+                EscaladeN1 = contact.First(s => s.Id.Equals(int.Parse(reader["escalade_n1"].ToString()!)))
+            });
+        }
+
+        return result;
+    }
 }
