@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,9 @@ public partial class Zones
     private void ButtonActivity_OnClick(object sender, RoutedEventArgs e)
     {
         var id = int.Parse(((RadioButton)sender).Tag!.ToString()!);
+        
+        if (((EActivite)id).Equals(_activity)) return;
+        
         _activity = (EActivite)id;
         GetAllDepartments();
     }
@@ -42,6 +46,7 @@ public partial class Zones
         var zones = _sqlHandler.GetAllZones().Where(s => s.Activity.Equals(_activity));
         
         CollectionZonesDepartment.Clear();
+        CollectionZones.Clear();
         foreach (var dept in zones.Select(s => s.Department)) CollectionZonesDepartment.Add(dept);
     }
 
@@ -51,4 +56,40 @@ public partial class Zones
         CollectionZones.Clear();
         foreach (var zone in zones) CollectionZones.Add(zone);
     }
+
+    private void ButtonAddZone_OnClick(object sender, RoutedEventArgs e)
+    {
+        var mode = GetModeUse();
+        Console.WriteLine(mode);
+    }
+
+    private void ButtonDeleteZone_OnClick(object sender, RoutedEventArgs e)
+    {
+        var mode = GetModeUse();
+    }
+
+    private EMode GetModeUse()
+    {
+        var dept = ListBoxDepartment.FindVisualChildren<ToggleButton>().FirstOrDefault(s => s.IsChecked.Equals(true));
+        var ui = ListBoxUi.FindVisualChildren<ToggleButton>().FirstOrDefault(s => s.IsChecked.Equals(true));
+
+        return (dept, ui) switch
+        {
+            (not null, not null) => EMode.Ui,
+            (not null, null) => EMode.Department,
+            _ => EMode.None
+        };
+    }
+    
+    private void ButtonShowContact_OnClick(object sender, RoutedEventArgs e)
+    {
+        
+    }
+}
+
+internal enum EMode
+{
+    None,
+    Department,
+    Ui
 }
