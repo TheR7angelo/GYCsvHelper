@@ -30,7 +30,7 @@ public class SqlHandler
 
         const string cmdStr = """
             INSERT INTO t_prod_data (activite, type_inter, nd, planif_fT, ui, act_prod, client, adresse, code_postal, ville_site)
-            VALUES ({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')
+            VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9})
         """;
         foreach (var row in rows)
         {
@@ -101,6 +101,22 @@ public class SqlHandler
                                  numbers='{contact.Number}'
                              WHERE id={contact.Id};
             """;
+        _sqLite.Execute(cmd);
+    }
+
+    public long NewContact(Contact contact)
+    {
+        var cmd =
+            $"""
+            INSERT INTO t_contact(nom, prenom, numbers) 
+                        VALUES ({_sqLite.SqlNull(contact.LastName)}, {_sqLite.SqlNull(contact.FirstName)}, {_sqLite.SqlNull(contact.Number)})
+            """;
+        return _sqLite.Execute(cmd);
+    }
+
+    public void DeleteContact(Contact contact)
+    {
+        var cmd = $"DELETE FROM t_contact WHERE id={contact.Id}";
         _sqLite.Execute(cmd);
     }
 }
