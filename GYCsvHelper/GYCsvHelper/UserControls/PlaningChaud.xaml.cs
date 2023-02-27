@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using LibsPlaningAChaud.CsvReader;
 using LibsPlaningAChaud.Excel;
@@ -15,9 +16,11 @@ namespace GYCsvHelper.UserControls;
 public partial class PlaningChaud
 {
     private SqlHandler _sqlHandler;
+    private readonly Button _buttonBack;
     
-    public PlaningChaud()
+    public PlaningChaud(Button buttonBack)
     {
+        _buttonBack = buttonBack;
         InitializeComponent();
         
         var db = Path.GetFullPath("Sql/data.sqlite");
@@ -89,11 +92,15 @@ public partial class PlaningChaud
         }
     }
 
-    private void ButtonBack_OnClick(object sender, RoutedEventArgs e) 
-        => TabItemMenu.IsSelected = true;
+    private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
+    {
+        _buttonBack.Visibility = Visibility.Visible;
+        TabItemMenu.IsSelected = true;
+    }
 
     private void ButtonContact_OnClick(object sender, RoutedEventArgs e)
     {
+        _buttonBack.Visibility = Visibility.Hidden;
         FrameContact.Content = new Contacts(_sqlHandler);
         TabItemContact.IsSelected = true;
     }

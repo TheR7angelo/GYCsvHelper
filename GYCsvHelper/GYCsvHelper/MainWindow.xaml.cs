@@ -39,7 +39,12 @@ namespace GYCsvHelper
 
         private void SelectItem(Type type)
         {
-            FrameMain.Content = Activator.CreateInstance(type);
+            FrameMain.Content = type switch
+            {
+                _ when type == typeof(PlaningChaud) => Activator.CreateInstance(type, ButtonBack),
+                _ => Activator.CreateInstance(type)
+            };
+            
             TabItemFrame.IsSelected = true;
         }
     }
