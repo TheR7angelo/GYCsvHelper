@@ -48,19 +48,20 @@
                                 Margin="3" />
                     </Grid>
 
-                    <Grid Grid.Column="1" Margin="3">
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="3">
                         <Button Content="Contacts" Click="ButtonContact_OnClick" />
-                    </Grid>
+                        <Button Content="Zones" Click="ButtonZones_OnClick" />
+                    </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="TabItemContact" Visibility="Collapsed">
+            <TabItem x:Name="TabItemSecond" Visibility="Collapsed">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Button Grid.Row="0" Content="Retours contact" Click="ButtonBack_OnClick" />
-                    <Frame Grid.Row="1" x:Name="FrameContact" NavigationUIVisibility="Hidden" />
+                    <Frame Grid.Row="1" x:Name="FrameSecond" NavigationUIVisibility="Hidden" />
                 </Grid>
             </TabItem>
 

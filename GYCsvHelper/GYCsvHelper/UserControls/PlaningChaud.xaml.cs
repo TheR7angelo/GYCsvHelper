@@ -98,10 +98,16 @@ public partial class PlaningChaud
         TabItemMenu.IsSelected = true;
     }
 
-    private void ButtonContact_OnClick(object sender, RoutedEventArgs e)
+    private void ButtonContact_OnClick(object sender, RoutedEventArgs e) 
+        => SetFrameSecond(typeof(Contacts));
+
+    private void ButtonZones_OnClick(object sender, RoutedEventArgs e) 
+        => SetFrameSecond(typeof(Zones));
+
+    private void SetFrameSecond(Type type)
     {
         _buttonBack.Visibility = Visibility.Hidden;
-        FrameContact.Content = new Contacts(_sqlHandler);
-        TabItemContact.IsSelected = true;
+        FrameSecond.Content = Activator.CreateInstance(type, _sqlHandler);
+        TabItemSecond.IsSelected = true;
     }
 }
