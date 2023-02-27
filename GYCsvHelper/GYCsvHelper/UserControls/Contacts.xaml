@@ -7,13 +7,26 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}, Mode=TwoWay, Path=., UpdateSourceTrigger=PropertyChanged}">
     <Grid Margin="7">
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" x:Name="ListBox" VerticalAlignment="Top" HorizontalAlignment="Center"
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="1" CornerRadius="1">
+            <StackPanel Margin="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Nouveau contact" Click="ButtonNewContact_OnClick" />
+                <Button Content="Supprimer contact" Click="ButtonDeleteContact_OnClick" />
+            </StackPanel>
+        </Border>
+
+        <ListBox Grid.Row="1" Grid.Column="0" x:Name="ListBoxContacts" VerticalAlignment="Top"
+                 HorizontalAlignment="Center"
                  ItemsSource="{Binding CollectionContacts}"
                  ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListBox.ItemTemplate>
@@ -30,7 +43,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid Grid.Column="2" x:Name="GridContactDefinition" MinWidth="500" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" x:Name="GridContactDefinition" MinWidth="500"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -49,18 +64,19 @@
             <TextBox Grid.Row="0" Grid.Column="1"
                      Text="{Binding ContactSelected.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      IsEnabled="False" />
-            
+
             <TextBox Grid.Row="1" Grid.Column="1"
                      Text="{Binding ContactSelected.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      IsEnabled="False" />
-            
+
             <TextBox Grid.Row="2" Grid.Column="1"
-                     Text="{Binding ContactSelected.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                     IsEnabled="False"/>
-            
-            <Button Grid.Row="3" Grid.Column="1" x:Name="ButtonValidChangeContact" Click="ButtonValidChangeContact_OnClick" Content="Valider"
-                    Margin="7" 
-                    IsEnabled="False"/>
+                     Text="{Binding ContactSelected.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="False" />
+
+            <Button Grid.Row="3" Grid.Column="1" x:Name="ButtonValidChangeContact"
+                    Click="ButtonValidChangeContact_OnClick" Content="Valider"
+                    Margin="7"
+                    IsEnabled="False" />
         </Grid>
     </Grid>
 </UserControl>
