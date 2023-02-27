@@ -5,32 +5,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              DataContext="{Binding RelativeSource={RelativeSource Self}, Mode=TwoWay, Path=., UpdateSourceTrigger=PropertyChanged}">
-    <Grid>
-        <Grid>
+    <Grid Margin="7">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ListBox Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"
-                     ItemsSource="{Binding CollectionContacts}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Button Click="ButtonContactName_OnClick">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding LastName}" />
-                                <TextBlock Text=" " />
-                                <TextBlock Text="{Binding FirstName}" />
-                            </StackPanel>
-                        </Button>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <!-- <ScrollViewer Grid.Column="0"> -->
+                <ListBox Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center"
+                         ItemsSource="{Binding CollectionContacts}"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         
+                         >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button Click="ButtonContactName_OnClick">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding LastName}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding FirstName}" />
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            <!-- </ScrollViewer> -->
 
-            <Line Grid.Column="1" Width="3" Fill="White"/>
-
-            <Grid Grid.Column="2" MinWidth="500" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Grid Grid.Column="2" MinWidth="500" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -52,10 +61,8 @@
                          Text="{Binding ContactSelected.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBox Grid.Row="2" Grid.Column="1"
                          Text="{Binding ContactSelected.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="ButtonValidChangeContact_OnClick" Content="Valider"/>
-
             </Grid>
         </Grid>
+        <Button Grid.Row="1" Click="ButtonValidChangeContact_OnClick" Content="Valider" />
     </Grid>
 </UserControl>
