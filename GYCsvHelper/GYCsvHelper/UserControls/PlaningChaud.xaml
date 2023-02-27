@@ -60,7 +60,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Content="Retours contact" Click="ButtonBack_OnClick" />
+                    <Button Grid.Row="0" Content="Retours" Click="ButtonBack_OnClick" />
                     <Frame Grid.Row="1" x:Name="FrameSecond" NavigationUIVisibility="Hidden" />
                 </Grid>
             </TabItem>
