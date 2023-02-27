@@ -4,8 +4,6 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                 xmlns:local="clr-namespace:GYCsvHelper"
-                 xmlns:userControls="clr-namespace:GYCsvHelper.UserControls"
                  mc:Ignorable="d"
 
                  TitleCharacterCasing="Normal"
@@ -52,7 +50,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="0" Content="Retours" Click="ButtonBack_OnClick" />
+                    <Button Grid.Row="0" x:Name="ButtonBack" Content="Retours" Click="ButtonBack_OnClick" />
                     <Frame Grid.Row="1" x:Name="FrameMain" NavigationUIVisibility="Hidden" />
 
                 </Grid>
