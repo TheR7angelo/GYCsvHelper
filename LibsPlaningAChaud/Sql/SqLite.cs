@@ -14,9 +14,13 @@ public class SqLite
 
     internal static void Disconnection() => _connection.Close();
 
-    internal string SqlNull(string? str) => string.IsNullOrEmpty(str) ? "NULL" : str.Replace("'", "''");
+    internal string SqlNull(string? str) => string.IsNullOrEmpty(str) ? "NULL" : $"'{str.Replace("'", "''")}'";
 
-    internal void Execute(string cmd) => new SQLiteCommand(cmd, _connection).ExecuteNonQuery();
-    
+    internal long Execute(string cmd)
+    {
+        new SQLiteCommand(cmd, _connection).ExecuteNonQuery();
+        return _connection.LastInsertRowId;
+    }
+
     internal SQLiteDataReader ExecuteReader(string cmd) => new SQLiteCommand(cmd, _connection).ExecuteReader();
 }
