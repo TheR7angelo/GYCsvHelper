@@ -7,6 +7,8 @@ using System.Windows.Controls.Primitives;
 using LibsPlaningAChaud.CsvReader;
 using LibsPlaningAChaud.Sql;
 using LibsPlaningAChaud.Sql.Struc;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace GYCsvHelper.UserControls;
 
@@ -57,9 +59,21 @@ public partial class Zones
         foreach (var zone in zones) CollectionZones.Add(zone);
     }
 
-    private void ButtonAddZone_OnClick(object sender, RoutedEventArgs e)
+    private async void ButtonAddZone_OnClick(object sender, RoutedEventArgs e)
     {
         var mode = GetModeUse();
+
+        switch (mode)
+        {
+            case EMode.Department:
+                var i = new MetroWindow();
+                i.Show();
+                var dialog = await i.ShowInputAsync("Hello", "Comment va tu ?");
+                break;
+            default:
+                break;
+        }
+        
         Console.WriteLine(mode);
     }
 
