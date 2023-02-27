@@ -74,7 +74,7 @@ public class SqlHandler
 
     public IEnumerable<Contact> GetAllContact()
     {
-        const string cmd = "SELECT * FROM t_contact ORDER BY nom";
+        const string cmd = "SELECT * FROM t_contact WHERE id != 0 ORDER BY nom";
 
         var result = new List<Contact>();
         var reader = _sqLite.ExecuteReader(cmd);
