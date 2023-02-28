@@ -23,7 +23,7 @@ public class SqlHandler
         _sqLite.Execute(cmd);
     }
 
-    public void ImportRows(IEnumerable<ExportInterventionCsv> rows, EActivite activity)
+    public void ImportRows(IEnumerable<ExportInterventionCsv> rows, EActivity activity)
     {
         var cmdClear = $"DELETE FROM t_prod_data WHERE activite = {(int)activity}";
         _sqLite.Execute(cmdClear);
@@ -74,7 +74,7 @@ public class SqlHandler
 
     public IEnumerable<Contact> GetAllContact()
     {
-        const string cmd = "SELECT * FROM t_contact WHERE id != 0 ORDER BY nom";
+        const string cmd = "SELECT * FROM t_contact ORDER BY nom";
 
         var result = new List<Contact>();
         var reader = _sqLite.ExecuteReader(cmd);
@@ -130,17 +130,33 @@ public class SqlHandler
         var result = new List<Zone>();
         while (reader.Read())
         {
+            var id = int.Parse(reader["id"].ToString()!);
+            var activity = (EActivity)int.Parse(reader["activite"].ToString()!);
+            var department = int.Parse(reader["dept"].ToString()!);
+            var ui = reader["ui"].ToString()!;
+            var ct = contact.First(s => s.Id.Equals(int.Parse(reader["contact"].ToString()!)));
+            var escaladeN1 = contact.First(s => s.Id.Equals(int.Parse(reader["escalade_n1"].ToString()!)));
+            
             result.Add(new Zone
             {
-                Id = int.Parse(reader["id"].ToString()!),
-                Activity = (EActivite)int.Parse(reader["activite"].ToString()!),
-                Department = int.Parse(reader["dept"].ToString()!),
-                Ui = reader["ui"].ToString()!,
-                Contact = contact.First(s => s.Id.Equals(int.Parse(reader["contact"].ToString()!))),
-                EscaladeN1 = contact.First(s => s.Id.Equals(int.Parse(reader["escalade_n1"].ToString()!)))
+                Id = id,
+                Activity = activity,
+                Department = department,
+                Ui = ui,
+                Contact = ct,
+                EscaladeN1 = escaladeN1
             });
         }
 
         return result;
+    }
+
+    public void InsertNewDept(EActivity activity, int dept, string ui)
+    {
+        var cmd = $"""
+                INSERT INTO t_prod_zone(activite, dept, ui)
+                            VALUES ({(int)activity}, {dept}, {_sqLite.SqlNull(ui)});
+                """;
+        _sqLite.Execute(cmd);
     }
 }
