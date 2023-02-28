@@ -1,24 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using LibsPlaningAChaud.CsvReader;
 using LibsPlaningAChaud.Sql;
 using LibsPlaningAChaud.Sql.Struc;
-using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
 
 namespace GYCsvHelper.UserControls;
 
-public partial class Zones
+public partial class Zones : INotifyPropertyChanged
 {
     private readonly SqlHandler _sqlHandler;
     private int _department;
     private EActivite _activity;
+
+    private List<int> _listDepartment = new();
+
+    public List<int> ListDepartment
+    {
+        get => _listDepartment;
+        set
+        {
+            _listDepartment = value;
+            OnPropertyChanged();
+        }
+    }
     
-    public ObservableCollection<int> CollectionZonesDepartment { get; } = new();
     public ObservableCollection<Zone> CollectionZones { get; } = new();
     
     public Zones(SqlHandler sqlHandler)
@@ -47,9 +59,9 @@ public partial class Zones
     {
         var zones = _sqlHandler.GetAllZones().Where(s => s.Activity.Equals(_activity));
         
-        CollectionZonesDepartment.Clear();
+        ListDepartment.Clear();
         CollectionZones.Clear();
-        foreach (var dept in zones.Select(s => s.Department)) CollectionZonesDepartment.Add(dept);
+        foreach (var dept in zones.Select(s => s.Department)) ListDepartment.Add(dept);
     }
 
     private void GetAllZones()
@@ -59,17 +71,17 @@ public partial class Zones
         foreach (var zone in zones) CollectionZones.Add(zone);
     }
 
-    private async void ButtonAddZone_OnClick(object sender, RoutedEventArgs e)
+    private void ButtonAddZone_OnClick(object sender, RoutedEventArgs e)
     {
         var mode = GetModeUse();
 
         switch (mode)
         {
             case EMode.Department:
-                var i = new MetroWindow();
-                i.Show();
-                var dialog = await i.ShowInputAsync("Hello", "Comment va tu ?");
+                AddDepartment();
                 break;
+            case EMode.Ui:
+            case EMode.None:
             default:
                 break;
         }
@@ -77,6 +89,18 @@ public partial class Zones
         Console.WriteLine(mode);
     }
 
+    private void AddDepartment()
+    {
+        var dialog = new Dialog.InputBoxNumeric(minValue:0);
+        dialog.ShowDialog();
+
+        var dept = dialog.Value;
+        if (!ListDepartment.Contains(dept))
+        {
+            
+        }
+    }
+    
     private void ButtonDeleteZone_OnClick(object sender, RoutedEventArgs e)
     {
         var mode = GetModeUse();
@@ -99,6 +123,11 @@ public partial class Zones
     {
         
     }
+    
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
 
 internal enum EMode

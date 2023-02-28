@@ -52,7 +52,7 @@
         </Grid>
 
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="ListBoxDepartment" VerticalAlignment="Center" HorizontalAlignment="Center"
-                 ItemsSource="{Binding CollectionZonesDepartment}"
+                 ItemsSource="{Binding ListDepartment}"
                  ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListBox.ItemTemplate>
                 <DataTemplate>
