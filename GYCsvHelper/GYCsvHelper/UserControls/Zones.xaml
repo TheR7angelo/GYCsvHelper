@@ -71,7 +71,7 @@
                     <ToggleButton Content="{Binding Ui}"
                                   IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"
                                   Tag="{Binding}"
-                                  Click="ButtonShowContact_OnClick" />
+                                  Click="ButtonUi_OnClick" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
