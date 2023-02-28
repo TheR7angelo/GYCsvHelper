@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -34,7 +33,7 @@ public partial class Contacts
 
     private void GetAllContacts()
     {
-        var contacts = _sqlHandler.GetAllContact();
+        var contacts = _sqlHandler.GetAllContact().Where(s => !s.Id.Equals(0));
         CollectionContacts.Clear();
         foreach (var contact in contacts) CollectionContacts.Add(contact);
     }
@@ -90,9 +89,7 @@ public partial class Contacts
             var id = unchecked((int)_sqlHandler.NewContact(ContactSelected));
             GetAllContacts();
             UpdateLayout();
-
-            var p = ListBoxContacts.Items.Count;
-            var q = CollectionContacts.Count;
+            
             var buttons = ListBoxContacts.FindVisualChildren<ToggleButton>();
             
             // todo trouver un moyen de sélection le nouveau bouton
