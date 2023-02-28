@@ -159,4 +159,10 @@ public class SqlHandler
                 """;
         _sqLite.Execute(cmd);
     }
+
+    public void DeleteZone(EActivity activity, string column, int id)
+    {
+        var cmd = $"DELETE FROM t_prod_zone WHERE activite={(int)activity} AND {column}={id}";
+        _sqLite.Execute(cmd);
+    }
 }
