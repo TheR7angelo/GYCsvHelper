@@ -43,16 +43,22 @@ public partial class PlaningChaud
     {
         var fileDialog = new OpenFileDialog
         {
-            Filter = "Fichier Csv (*.csv)|*.csv"
+            Filter = "Fichier Csv (*.csv)|*.csv",
+            Multiselect = true
         };
 
         if (!fileDialog.ShowDialog().Equals(true)) return;
-        var file = fileDialog.FileName;
+        var files = fileDialog.FileNames;
+
+        var result = new List<ExportInterventionCsv>();
+        foreach (var file in files)
+        {
+            if (!File.Exists(file)) return;
+            var rowsCsv = Reader.Read(file, activity);
+            result.AddRange(rowsCsv);
+        }
         
-        if (!File.Exists(file)) return;
-        
-        var rowsCsv = Reader.Read(file, activity);
-        _sqlHandler.ImportRows(rowsCsv, activity);
+        _sqlHandler.ImportRows(result, activity);
         checkBox.IsChecked = true;
     }
 
