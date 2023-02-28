@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -161,12 +160,21 @@ public partial class Zones
         };
     }
 
-    private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void SelectorContact_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var combo = (ComboBox)sender;
-        var value = ListContact.First(s => s.Id.Equals(combo.SelectedValue));
-        
-        Console.WriteLine(value.FirstName);
+        var contact = ListContact.First(s => s.Id.Equals(combo.SelectedValue));
+        var tag = (string)combo.Tag;
+
+        switch (tag)
+        {
+            case "Contact":
+                Zone.Contact = contact;
+                break;
+            case "EscaladeN1":
+                Zone.EscaladeN1 = contact;
+                break;
+        }
     }
 }
 

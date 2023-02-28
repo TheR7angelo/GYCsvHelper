@@ -98,7 +98,8 @@
                       DisplayMemberPath="FullName"
                       SelectedValuePath="Id"
                       SelectedValue="{Binding Zone.Contact, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      SelectionChanged="Selector_OnSelectionChanged" />
+                      Tag="Contact"
+                      SelectionChanged="SelectorContact_OnSelectionChanged" />
 
             <Label Grid.Row="1" Grid.Column="0" Content="Escalade N1" />
             
@@ -107,7 +108,8 @@
                       DisplayMemberPath="FullName"
                       SelectedValuePath="Id"
                       SelectedValue="{Binding Zone.EscaladeN1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      SelectionChanged="Selector_OnSelectionChanged" />
+                      Tag="EscaladeN1"
+                      SelectionChanged="SelectorContact_OnSelectionChanged" />
 
         </Grid>
 
