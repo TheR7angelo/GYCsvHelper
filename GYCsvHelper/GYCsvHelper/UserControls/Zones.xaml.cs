@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -12,7 +9,7 @@ using LibsPlaningAChaud.Sql.Struc;
 
 namespace GYCsvHelper.UserControls;
 
-public partial class Zones : INotifyPropertyChanged
+public partial class Zones
 {
     private readonly SqlHandler _sqlHandler;
     private int _department;
@@ -50,7 +47,7 @@ public partial class Zones : INotifyPropertyChanged
 
         ListDepartment.Clear();
         CollectionZones.Clear();
-        foreach (var dept in zones.Select(s => s.Department)) ListDepartment.Add(dept);
+        foreach (var dept in zones.Select(s => s.Department).Distinct()) ListDepartment.Add(dept);
     }
 
     private void GetAllZones()
@@ -71,10 +68,20 @@ public partial class Zones : INotifyPropertyChanged
                 AddDepartment();
                 break;
             case EMode.Ui:
+                AddUi();
+                break;
             case EMode.None:
             default:
                 break;
         }
+    }
+
+    private void AddUi()
+    {
+        var ui = Function.GetUi("Quelle est le code ui à utilisé");
+        if (ui is null) return;
+        _sqlHandler.InsertNewDept(_activity, _department, ui);
+        GetAllZones();
     }
 
     private void AddDepartment()
@@ -87,8 +94,7 @@ public partial class Zones : INotifyPropertyChanged
         if (ui is null) return;
 
         _sqlHandler.InsertNewDept(_activity, (int)dept, ui);
-        
-        Console.WriteLine(ui);
+        GetAllDepartments();
     }
 
     private void ButtonDeleteZone_OnClick(object sender, RoutedEventArgs e)
@@ -112,11 +118,6 @@ public partial class Zones : INotifyPropertyChanged
     private void ButtonShowContact_OnClick(object sender, RoutedEventArgs e)
     {
     }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
 
 internal enum EMode
