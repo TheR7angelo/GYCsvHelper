@@ -28,18 +28,18 @@ public partial class PlaningChaud
     }
 
     private void ButtonProdR10_OnClick(object sender, RoutedEventArgs e) 
-        => ImportData(EActivite.ProdGpCu, CheckBoxProdr10);
+        => ImportData(EActivity.ProdGpCu, CheckBoxProdr10);
 
     private void ButtonSavGp_OnClick(object sender, RoutedEventArgs e)
-        => ImportData(EActivite.SavGpCu, CheckBoxSavgp);
+        => ImportData(EActivity.SavGpCu, CheckBoxSavgp);
 
     private void ButtonProdFtth_OnClick(object sender, RoutedEventArgs e)
-        => ImportData(EActivite.ProdFtth, CheckBoxProdFtth);
+        => ImportData(EActivity.ProdFtth, CheckBoxProdFtth);
 
     private void ButtonSavbl_OnClick(object sender, RoutedEventArgs e)
-        => ImportData(EActivite.Savbl, CheckBoxSavbl);
+        => ImportData(EActivity.Savbl, CheckBoxSavbl);
 
-    private void ImportData(EActivite activity, ToggleButton checkBox)
+    private void ImportData(EActivity activity, ToggleButton checkBox)
     {
         var fileDialog = new OpenFileDialog
         {

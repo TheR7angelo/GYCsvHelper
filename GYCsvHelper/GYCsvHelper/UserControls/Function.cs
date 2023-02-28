@@ -9,8 +9,7 @@ public static class Function
     /// <summary>
     /// Finds the visual child.
     /// </summary>
-    /// <typeparam name="childItem">The type of the child item.</typeparam>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of the child item.</typeparam>
     /// <param name="obj">The obj.</param>
     /// <returns></returns>
     public static IEnumerable<T> FindVisualChildren<T>(this DependencyObject obj) where T : DependencyObject
@@ -31,5 +30,23 @@ public static class Function
                 }
             }
         }
+    }
+    
+    public static int? GetDepartment()
+    {
+        var dialog = new Dialog.InputBoxNumeric(minValue:0);
+        dialog.ShowDialog();
+
+        var dept = dialog.Value;
+        if (!dept.Equals(0)) return dept;
+        return null;
+    }
+
+    public static string? GetUi(string question)
+    {
+        var dialog = new Dialog.InputBoxString(question);
+        dialog.ShowDialog();
+
+        return dialog.Answer;
     }
 }

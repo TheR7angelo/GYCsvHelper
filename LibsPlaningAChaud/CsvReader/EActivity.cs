@@ -1,6 +1,6 @@
 ﻿namespace LibsPlaningAChaud.CsvReader;
 
-public enum EActivite
+public enum EActivity
 {
     None,
     ProdGpCu,

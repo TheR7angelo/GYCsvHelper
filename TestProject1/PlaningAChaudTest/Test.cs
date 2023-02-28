@@ -13,7 +13,7 @@ public class Test
         var db = Path.GetFullPath("Sql/data.sqlite");
         
         const string file = "C:\\Users\\ZP6177\\Downloads\\Nouveau dossier\\export_interventions.csv";
-        const EActivite activity = EActivite.ProdGpCu;
+        const EActivity activity = EActivity.ProdGpCu;
 
         var sqlHandler = new SqlHandler(db);
         var rowsCsv = Reader.Read(file, activity);

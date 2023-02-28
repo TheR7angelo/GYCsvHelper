@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -17,22 +16,12 @@ public partial class Zones : INotifyPropertyChanged
 {
     private readonly SqlHandler _sqlHandler;
     private int _department;
-    private EActivite _activity;
+    private EActivity _activity;
 
-    private List<int> _listDepartment = new();
+    public ObservableCollection<int> ListDepartment { get; } = new();
 
-    public List<int> ListDepartment
-    {
-        get => _listDepartment;
-        set
-        {
-            _listDepartment = value;
-            OnPropertyChanged();
-        }
-    }
-    
     public ObservableCollection<Zone> CollectionZones { get; } = new();
-    
+
     public Zones(SqlHandler sqlHandler)
     {
         _sqlHandler = sqlHandler;
@@ -42,13 +31,13 @@ public partial class Zones : INotifyPropertyChanged
     private void ButtonActivity_OnClick(object sender, RoutedEventArgs e)
     {
         var id = int.Parse(((RadioButton)sender).Tag!.ToString()!);
-        
-        if (((EActivite)id).Equals(_activity)) return;
-        
-        _activity = (EActivite)id;
+
+        if (((EActivity)id).Equals(_activity)) return;
+
+        _activity = (EActivity)id;
         GetAllDepartments();
     }
-    
+
     private void ButtonDepartment_OnClick(object sender, RoutedEventArgs e)
     {
         _department = int.Parse(((ToggleButton)sender).Content.ToString()!);
@@ -58,7 +47,7 @@ public partial class Zones : INotifyPropertyChanged
     private void GetAllDepartments()
     {
         var zones = _sqlHandler.GetAllZones().Where(s => s.Activity.Equals(_activity));
-        
+
         ListDepartment.Clear();
         CollectionZones.Clear();
         foreach (var dept in zones.Select(s => s.Department)) ListDepartment.Add(dept);
@@ -66,7 +55,8 @@ public partial class Zones : INotifyPropertyChanged
 
     private void GetAllZones()
     {
-        var zones = _sqlHandler.GetAllZones().Where(s => s.Activity.Equals(_activity) && s.Department.Equals(_department));
+        var zones = _sqlHandler.GetAllZones()
+            .Where(s => s.Activity.Equals(_activity) && s.Department.Equals(_department));
         CollectionZones.Clear();
         foreach (var zone in zones) CollectionZones.Add(zone);
     }
@@ -85,22 +75,22 @@ public partial class Zones : INotifyPropertyChanged
             default:
                 break;
         }
-        
-        Console.WriteLine(mode);
     }
 
     private void AddDepartment()
     {
-        var dialog = new Dialog.InputBoxNumeric(minValue:0);
-        dialog.ShowDialog();
+        var dept = Function.GetDepartment();
+        if (dept is null) return;
+        if (ListDepartment.Contains((int)dept)) return;
 
-        var dept = dialog.Value;
-        if (!ListDepartment.Contains(dept))
-        {
-            
-        }
+        var ui = Function.GetUi("Quelle est le code ui à utilisé");
+        if (ui is null) return;
+
+        _sqlHandler.InsertNewDept(_activity, (int)dept, ui);
+        
+        Console.WriteLine(ui);
     }
-    
+
     private void ButtonDeleteZone_OnClick(object sender, RoutedEventArgs e)
     {
         var mode = GetModeUse();
@@ -118,12 +108,11 @@ public partial class Zones : INotifyPropertyChanged
             _ => EMode.None
         };
     }
-    
+
     private void ButtonShowContact_OnClick(object sender, RoutedEventArgs e)
     {
-        
     }
-    
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

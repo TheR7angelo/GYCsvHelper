@@ -22,9 +22,9 @@ public class Zone : INotifyPropertyChanged
         }
     }
 
-    private EActivite _activity;
+    private EActivity _activity;
 
-    public EActivite Activity
+    public EActivity Activity
     {
         get => _activity;
         set

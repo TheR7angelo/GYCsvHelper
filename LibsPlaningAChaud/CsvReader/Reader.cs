@@ -4,7 +4,7 @@ namespace LibsPlaningAChaud.CsvReader;
 
 public static class Reader
 {
-    public static IEnumerable<ExportInterventionCsv> Read(string filePath, EActivite activity)
+    public static IEnumerable<ExportInterventionCsv> Read(string filePath, EActivity activity)
     {
         using var reader = new StreamReader(filePath, Encoding.Latin1);
         var csv = new CsvHelper.CsvReader(reader, Common.GetConfigurationReader);
