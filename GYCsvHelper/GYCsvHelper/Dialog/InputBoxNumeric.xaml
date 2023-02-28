@@ -8,10 +8,9 @@
                  
                  WindowStartupLocation="CenterScreen"
                  
-                 Height="115" Width="525"
+                 SizeToContent="WidthAndHeight"
                  
-                 DataContext="{Binding RelativeSource={RelativeSource Self}, Mode=TwoWay, Path=., UpdateSourceTrigger=PropertyChanged}"
-                 >
+                 DataContext="{Binding RelativeSource={RelativeSource Self}, Mode=TwoWay, Path=., UpdateSourceTrigger=PropertyChanged}">
     <Grid>
         <Grid MouseWheel="UIElement_OnMouseWheel">
             <Grid.ColumnDefinitions>
@@ -19,7 +18,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" MaxLines="1" Text="{Binding Value}" />
+            <TextBox Grid.Column="0" MaxLines="1" MinWidth="250" Text="{Binding Value}" />
             <StackPanel Grid.Column="1" Orientation="Vertical">
                 <Button Content="▲" Width="35" Height="35" Padding="0" Click="ButtonUp_OnClick"/>
                 <Button Content="▼" Width="35" Height="35" Padding="0" Click="ButtonDown_OnClick"/>
