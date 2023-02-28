@@ -42,6 +42,8 @@ public class Contact : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
+    
+    public string FullName => FirstName + " " + LastName;
 
     private string _number = string.Empty;
 
