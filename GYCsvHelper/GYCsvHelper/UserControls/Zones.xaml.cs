@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,15 +14,19 @@ public partial class Zones
 {
     private readonly SqlHandler _sqlHandler;
     private int _department;
+    private Zone _zone = new();
     private EActivity _activity;
 
     public ObservableCollection<int> ListDepartment { get; } = new();
-
     public ObservableCollection<Zone> CollectionZones { get; } = new();
+    public List<Contact> ListContact { get; } = new();
 
     public Zones(SqlHandler sqlHandler)
     {
         _sqlHandler = sqlHandler;
+        var contacts = _sqlHandler.GetAllContact();
+        ListContact.AddRange(contacts);
+
         InitializeComponent();
     }
 
@@ -41,23 +46,6 @@ public partial class Zones
         GetAllZones();
     }
 
-    private void GetAllDepartments()
-    {
-        var zones = _sqlHandler.GetAllZones().Where(s => s.Activity.Equals(_activity));
-
-        ListDepartment.Clear();
-        CollectionZones.Clear();
-        foreach (var dept in zones.Select(s => s.Department).Distinct()) ListDepartment.Add(dept);
-    }
-
-    private void GetAllZones()
-    {
-        var zones = _sqlHandler.GetAllZones()
-            .Where(s => s.Activity.Equals(_activity) && s.Department.Equals(_department));
-        CollectionZones.Clear();
-        foreach (var zone in zones) CollectionZones.Add(zone);
-    }
-
     private void ButtonAddZone_OnClick(object sender, RoutedEventArgs e)
     {
         var mode = GetModeUse();
@@ -74,6 +62,57 @@ public partial class Zones
             default:
                 break;
         }
+    }
+
+    private void ButtonDeleteZone_OnClick(object sender, RoutedEventArgs e)
+    {
+        var mode = GetModeUse();
+
+        int id;
+        string column;
+
+        switch (mode)
+        {
+            case EMode.Department:
+                id = _department;
+                column = "dept";
+                break;
+            case EMode.Ui:
+                id = _zone.Id;
+                column = "id";
+                break;
+            case EMode.None:
+            default:
+                return;
+        }
+
+        _sqlHandler.DeleteZone(_activity, column, id);
+        if (mode.Equals(EMode.Department)) GetAllDepartments();
+        else GetAllZones();
+    }
+
+    private void ButtonUi_OnClick(object sender, RoutedEventArgs e)
+    {
+        var button = (ToggleButton)sender;
+        var zone = (Zone)button.DataContext;
+        _zone = zone;
+    }
+
+    private void GetAllDepartments()
+    {
+        var zones = _sqlHandler.GetAllZones().Where(s => s.Activity.Equals(_activity));
+
+        ListDepartment.Clear();
+        CollectionZones.Clear();
+        foreach (var dept in zones.Select(s => s.Department).Distinct()) ListDepartment.Add(dept);
+    }
+
+    private void GetAllZones()
+    {
+        var zones = _sqlHandler.GetAllZones()
+            .Where(s => s.Activity.Equals(_activity) && s.Department.Equals(_department));
+        CollectionZones.Clear();
+        foreach (var zone in zones) CollectionZones.Add(zone);
     }
 
     private void AddUi()
@@ -97,11 +136,6 @@ public partial class Zones
         GetAllDepartments();
     }
 
-    private void ButtonDeleteZone_OnClick(object sender, RoutedEventArgs e)
-    {
-        var mode = GetModeUse();
-    }
-
     private EMode GetModeUse()
     {
         var dept = ListBoxDepartment.FindVisualChildren<ToggleButton>().FirstOrDefault(s => s.IsChecked.Equals(true));
@@ -113,10 +147,6 @@ public partial class Zones
             (not null, null) => EMode.Department,
             _ => EMode.None
         };
-    }
-
-    private void ButtonShowContact_OnClick(object sender, RoutedEventArgs e)
-    {
     }
 }
 
