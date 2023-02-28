@@ -33,11 +33,7 @@
                 <DataTemplate>
                     <ToggleButton Click="ButtonContactName_OnClick"
                                   IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding LastName}" />
-                            <TextBlock Text=" " />
-                            <TextBlock Text="{Binding FirstName}" />
-                        </StackPanel>
+                        <Label Content="{Binding FullName}"/>
                     </ToggleButton>
                 </DataTemplate>
             </ListBox.ItemTemplate>
