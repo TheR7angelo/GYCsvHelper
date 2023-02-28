@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -14,11 +15,13 @@ public partial class Zones
 {
     private readonly SqlHandler _sqlHandler;
     private int _department;
-    private Zone _zone = new();
+
     private EActivity _activity;
 
     public ObservableCollection<int> ListDepartment { get; } = new();
     public ObservableCollection<Zone> CollectionZones { get; } = new();
+    
+    public Zone Zone { get; } = new();
     public List<Contact> ListContact { get; } = new();
 
     public Zones(SqlHandler sqlHandler)
@@ -78,7 +81,7 @@ public partial class Zones
                 column = "dept";
                 break;
             case EMode.Ui:
-                id = _zone.Id;
+                id = Zone.Id;
                 column = "id";
                 break;
             case EMode.None:
@@ -95,7 +98,16 @@ public partial class Zones
     {
         var button = (ToggleButton)sender;
         var zone = (Zone)button.DataContext;
-        _zone = zone;
+        
+        UpdateZoneDefinition(zone);
+    }
+    
+    private void UpdateZoneDefinition(Zone zone)
+    {
+        foreach (var property in typeof(Zone).GetProperties().Where(p => p.CanWrite))
+        {
+            property.SetValue(Zone, property.GetValue(zone, null), null);
+        }
     }
 
     private void GetAllDepartments()
@@ -147,6 +159,14 @@ public partial class Zones
             (not null, null) => EMode.Department,
             _ => EMode.None
         };
+    }
+
+    private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var combo = (ComboBox)sender;
+        var value = ListContact.First(s => s.Id.Equals(combo.SelectedValue));
+        
+        Console.WriteLine(value.FirstName);
     }
 }
 
