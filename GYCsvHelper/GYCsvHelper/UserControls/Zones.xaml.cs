@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -19,9 +20,11 @@ public partial class Zones
 
     public ObservableCollection<int> ListDepartment { get; } = new();
     public ObservableCollection<Zone> CollectionZones { get; } = new();
-    
+
     public Zone Zone { get; } = new();
     public List<Contact> ListContact { get; } = new();
+
+    private int _oldDept = -1;
 
     public Zones(SqlHandler sqlHandler)
     {
@@ -45,6 +48,9 @@ public partial class Zones
     private void ButtonDepartment_OnClick(object sender, RoutedEventArgs e)
     {
         _department = int.Parse(((ToggleButton)sender).Content.ToString()!);
+
+        if (!_department.Equals(_oldDept)) ResetGridContact();
+
         GetAllZones();
     }
 
@@ -97,16 +103,26 @@ public partial class Zones
     {
         var button = (ToggleButton)sender;
         var zone = (Zone)button.DataContext;
-        
-        UpdateZoneDefinition(zone);
+
+        if (button.IsChecked.Equals(true))
+        {
+            UpdateZoneDefinition(zone);
+            GridContact.IsEnabled = true;
+        }
+        else ResetGridContact();
     }
-    
+
     private void UpdateZoneDefinition(Zone zone)
     {
+        _oldDept = zone.Department;
+
         foreach (var property in typeof(Zone).GetProperties().Where(p => p.CanWrite))
         {
             property.SetValue(Zone, property.GetValue(zone, null), null);
         }
+
+        ComboBoxContact.SelectedValue = zone.Contact.Id;
+        ComboBoxEscaladeN1.SelectedValue = zone.EscaladeN1.Id;
     }
 
     private void GetAllDepartments()
@@ -160,21 +176,17 @@ public partial class Zones
         };
     }
 
-    private void SelectorContact_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ButtonValidUpdateZone_OnClick(object sender, RoutedEventArgs e)
     {
-        var combo = (ComboBox)sender;
-        var contact = ListContact.First(s => s.Id.Equals(combo.SelectedValue));
-        var tag = (string)combo.Tag;
-
-        switch (tag)
-        {
-            case "Contact":
-                Zone.Contact = contact;
-                break;
-            case "EscaladeN1":
-                Zone.EscaladeN1 = contact;
-                break;
-        }
+        Console.WriteLine(Zone.Contact.FullName);
+        Console.WriteLine(Zone.EscaladeN1.FullName);
+    }
+    
+    private void ResetGridContact()
+    {
+        ComboBoxContact.SelectedValue = 0;
+        ComboBoxEscaladeN1.SelectedValue = 0;
+        GridContact.IsEnabled = false;
     }
 }
 
