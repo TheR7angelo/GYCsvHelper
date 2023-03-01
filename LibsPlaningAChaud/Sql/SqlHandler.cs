@@ -165,4 +165,15 @@ public class SqlHandler
         var cmd = $"DELETE FROM t_prod_zone WHERE activite={(int)activity} AND {column}={id}";
         _sqLite.Execute(cmd);
     }
+
+    public void UpdateZone(Zone zone)
+    {
+        var cmd = $"""
+            UPDATE t_prod_zone
+            SET contact = {zone.Contact.Id},
+                escalade_n1 = {zone.EscaladeN1.Id}
+            WHERE id = {zone.Id};
+            """;
+        _sqLite.Execute(cmd);
+    }
 }

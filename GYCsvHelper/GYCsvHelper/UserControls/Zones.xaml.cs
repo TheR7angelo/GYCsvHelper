@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -176,12 +175,8 @@ public partial class Zones
         };
     }
 
-    private void ButtonValidUpdateZone_OnClick(object sender, RoutedEventArgs e)
-    {
-        Console.WriteLine(Zone.Contact.FullName);
-        Console.WriteLine(Zone.EscaladeN1.FullName);
-    }
-    
+    private void ButtonValidUpdateZone_OnClick(object sender, RoutedEventArgs e) => _sqlHandler.UpdateZone(Zone);
+
     private void ResetGridContact()
     {
         ComboBoxContact.SelectedValue = 0;
