@@ -80,10 +80,13 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid Grid.Row="1" Grid.Column="2" >
+        <Grid Grid.Row="1" Grid.Column="2" x:Name="GridContact" IsEnabled="False"
+              HorizontalAlignment="Center" VerticalAlignment="Center">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -93,23 +96,23 @@
 
             <Label Grid.Row="0" Grid.Column="0" Content="Contact" />
 
-            <ComboBox Grid.Row="0" Grid.Column="1"
+            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ComboBoxContact"
+                      SelectedItem="{Binding Zone.Contact, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       ItemsSource="{Binding ListContact}"
-                      DisplayMemberPath="FullName"
                       SelectedValuePath="Id"
-                      SelectedValue="{Binding Zone.Contact, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      Tag="Contact"
-                      SelectionChanged="SelectorContact_OnSelectionChanged" />
+                      DisplayMemberPath="FullName"
+                       />
 
             <Label Grid.Row="1" Grid.Column="0" Content="Escalade N1" />
-            
-            <ComboBox Grid.Row="1" Grid.Column="1"
+
+            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ComboBoxEscaladeN1"
+                      SelectedItem="{Binding Zone.EscaladeN1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       ItemsSource="{Binding ListContact}"
-                      DisplayMemberPath="FullName"
                       SelectedValuePath="Id"
-                      SelectedValue="{Binding Zone.EscaladeN1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                      Tag="EscaladeN1"
-                      SelectionChanged="SelectorContact_OnSelectionChanged" />
+                      DisplayMemberPath="FullName" />
+
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Mettre à jour"
+                    Click="ButtonValidUpdateZone_OnClick" />
 
         </Grid>
 
