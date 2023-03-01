@@ -18,7 +18,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="1" CornerRadius="1">
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="1"
+                CornerRadius="1">
             <StackPanel Margin="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Content="Nouveau contact" Click="ButtonNewContact_OnClick" />
                 <Button Content="Supprimer contact" Click="ButtonDeleteContact_OnClick" />
@@ -33,7 +34,7 @@
                 <DataTemplate>
                     <ToggleButton Click="ButtonContactName_OnClick"
                                   IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                        <Label Content="{Binding FullName}"/>
+                        <Label Content="{Binding FullName}" />
                     </ToggleButton>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -69,10 +70,9 @@
                      Text="{Binding ContactSelected.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      IsEnabled="False" />
 
-            <Button Grid.Row="3" Grid.Column="1" x:Name="ButtonValidChangeContact"
+            <Button Grid.Row="3" Grid.Column="1"
                     Click="ButtonValidChangeContact_OnClick" Content="Valider"
-                    Margin="7"
-                    IsEnabled="False" />
+                    Margin="7" />
         </Grid>
     </Grid>
 </UserControl>
