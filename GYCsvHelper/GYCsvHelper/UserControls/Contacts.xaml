@@ -18,13 +18,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White" BorderThickness="1"
-                CornerRadius="1">
-            <StackPanel Margin="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Content="Nouveau contact" Click="ButtonNewContact_OnClick" />
-                <Button Content="Supprimer contact" Click="ButtonDeleteContact_OnClick" />
-            </StackPanel>
-        </Border>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Nouveau contact" Margin="3, 0" Click="ButtonNewContact_OnClick" />
+            <Button Content="Supprimer contact" Margin="3, 0" Click="ButtonDeleteContact_OnClick" />
+        </StackPanel>
 
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="ListBoxContacts" VerticalAlignment="Center"
                  HorizontalAlignment="Center"
