@@ -49,8 +49,8 @@
                     </Grid>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="3">
-                        <Button Content="Contacts" Click="ButtonContact_OnClick" />
-                        <Button Content="Zones" Click="ButtonZones_OnClick" />
+                        <Button Content="Contacts" Margin="3" Click="ButtonContact_OnClick" />
+                        <Button Content="Zones" Margin="3" Click="ButtonZones_OnClick" />
                     </StackPanel>
                 </Grid>
             </TabItem>
