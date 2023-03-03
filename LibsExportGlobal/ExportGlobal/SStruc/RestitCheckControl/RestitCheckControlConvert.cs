@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using CsvHelper.Configuration.Attributes;
 using LibsExportGlobal.CsvReader;
 
-namespace LibsExportGlobal.ExportGlobal.SStruc;
+namespace LibsExportGlobal.ExportGlobal.SStruc.RestitCheckControl;
 
 public class RestitCheckControlConvert : INotifyPropertyChanged, IConvert
 {
