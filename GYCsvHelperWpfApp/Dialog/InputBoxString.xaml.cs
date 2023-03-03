@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 
-namespace GYCsvHelper.Dialog;
+namespace GYCsvHelperWpfApp.Dialog;
 
 public partial class InputBoxString : INotifyPropertyChanged
 {

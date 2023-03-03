@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using GYCsvHelperWpfApp.Dialog;
 
-namespace GYCsvHelper.UserControls;
+namespace GYCsvHelperWpfApp.UserControls;
 
 public static class Function
 {
@@ -34,7 +35,7 @@ public static class Function
     
     public static int? GetDepartment()
     {
-        var dialog = new Dialog.InputBoxNumeric(minValue:0);
+        var dialog = new InputBoxNumeric(minValue:0);
         dialog.ShowDialog();
 
         var dept = dialog.Value;

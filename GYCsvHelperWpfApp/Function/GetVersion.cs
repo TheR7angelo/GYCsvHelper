@@ -7,7 +7,7 @@ using Ookii.Dialogs.Wpf;
 using Syroot.Windows.IO;
 using UpdateManager;
 
-namespace GYCsvHelper.Function;
+namespace GYCsvHelperWpfApp.Function;
 
 public static class GetVersion
 {

@@ -8,7 +8,7 @@ using LibsPlaningAChaud.CsvReader;
 using LibsPlaningAChaud.Sql;
 using LibsPlaningAChaud.Sql.Struc;
 
-namespace GYCsvHelper.UserControls;
+namespace GYCsvHelperWpfApp.UserControls;
 
 public partial class Zones
 {

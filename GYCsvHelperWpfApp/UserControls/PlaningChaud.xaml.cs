@@ -11,7 +11,7 @@ using LibsPlaningAChaud.Excel;
 using LibsPlaningAChaud.Sql;
 using Microsoft.Win32;
 
-namespace GYCsvHelper.UserControls;
+namespace GYCsvHelperWpfApp.UserControls;
 
 public partial class PlaningChaud
 {

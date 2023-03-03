@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GYCsvHelper.Function;
+namespace GYCsvHelperWpfApp.Function;
 
 public static class AssemblyCl
 {

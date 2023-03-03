@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 
-namespace GYCsvHelper.Dialog;
+namespace GYCsvHelperWpfApp.Dialog;
 
 public sealed partial class InputBoxNumeric : INotifyPropertyChanged
 {

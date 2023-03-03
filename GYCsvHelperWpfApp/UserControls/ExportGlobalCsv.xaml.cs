@@ -5,7 +5,7 @@ using LibsExportGlobal.ExportGlobal.SStruc.ExportGlobal;
 using LibsExportGlobal.ExportGlobal.SStruc.RestitCheckControl;
 using Microsoft.Win32;
 
-namespace GYCsvHelper.UserControls;
+namespace GYCsvHelperWpfApp.UserControls;
 
 public partial class ExportGlobalCsv
 {

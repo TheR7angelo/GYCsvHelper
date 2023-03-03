@@ -7,7 +7,7 @@ using System.Windows.Controls.Primitives;
 using LibsPlaningAChaud.Sql;
 using LibsPlaningAChaud.Sql.Struc;
 
-namespace GYCsvHelper.UserControls;
+namespace GYCsvHelperWpfApp.UserControls;
 
 public partial class Contacts
 {

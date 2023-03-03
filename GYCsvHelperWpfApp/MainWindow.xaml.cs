@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
-using GYCsvHelper.UserControls;
+using GYCsvHelperWpfApp.Function;
+using GYCsvHelperWpfApp.UserControls;
 
-namespace GYCsvHelper
+namespace GYCsvHelperWpfApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -14,9 +15,9 @@ namespace GYCsvHelper
         {
             InitializeComponent();
 
-            if (Function.GetVersion.GetUpdate())
+            if (GetVersion.GetUpdate())
             {
-                Function.GetVersion.Update();
+                GetVersion.Update();
                 GridFooter.Background = Brushes.Crimson;
             }
             else
@@ -24,8 +25,8 @@ namespace GYCsvHelper
                 GridFooter.Background = Brushes.ForestGreen;
             }
 
-            LabelVersion.Content = Function.AssemblyCl.GetVersionDeploy().ToString();
-            Title = Function.AssemblyCl.GetNameDeploy();
+            LabelVersion.Content = AssemblyCl.GetVersionDeploy().ToString();
+            Title = AssemblyCl.GetNameDeploy();
         }
 
         private void ButtonBack_OnClick(object sender, RoutedEventArgs e) 
