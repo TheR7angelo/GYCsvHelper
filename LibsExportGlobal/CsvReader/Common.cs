@@ -1,8 +1,9 @@
 ﻿using System.Globalization;
 using System.Text;
 using CsvHelper.Configuration;
+using LibsExportGlobal.ExportGlobal.SStruc;
 
-namespace Libs.ExportGlobal.CsvReader;
+namespace LibsExportGlobal.CsvReader;
 
 public static class Common
 {
@@ -12,7 +13,7 @@ public static class Common
     public static CsvConfiguration GetConfigurationWriter => new(CultureInfo.InvariantCulture)
         { Delimiter = ";", Encoding = Encoding.Latin1, BadDataFound = null, HasHeaderRecord = false };
 
-    public static string GetSavePath(this SStruc.SFilePath filePath, string baseName)
+    public static string GetSavePath(this SFilePath filePath, string baseName)
     {
         var date = DateTime.Now;
 

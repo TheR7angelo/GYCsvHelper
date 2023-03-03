@@ -1,4 +1,4 @@
-﻿namespace Libs.ExportGlobal.SStruc;
+﻿namespace LibsExportGlobal.ExportGlobal.SStruc;
 
 public struct SFilePath
 {

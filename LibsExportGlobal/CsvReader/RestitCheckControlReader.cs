@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using CsvHelper;
-using Libs.ExportGlobal.SStruc;
+using LibsExportGlobal.ExportGlobal.SStruc;
 
-namespace Libs.ExportGlobal.CsvReader;
+namespace LibsExportGlobal.CsvReader;
 
 public class RestitCheckControlReader : IReader, IDisposable
 {

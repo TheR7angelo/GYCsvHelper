@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
-using Libs.ExportGlobal.CsvReader;
-using Libs.ExportGlobal.SStruc;
+using LibsExportGlobal.CsvReader;
+using LibsExportGlobal.ExportGlobal.SStruc;
 
 namespace GYCsvHelper.UserControls;
 

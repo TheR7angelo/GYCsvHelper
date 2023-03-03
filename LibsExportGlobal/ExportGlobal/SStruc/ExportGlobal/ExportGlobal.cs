@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using CsvHelper.Configuration.Attributes;
 
-namespace Libs.ExportGlobal.SStruc;
+namespace LibsExportGlobal.ExportGlobal.SStruc;
 
 public class ExportGlobal : INotifyPropertyChanged
 {
