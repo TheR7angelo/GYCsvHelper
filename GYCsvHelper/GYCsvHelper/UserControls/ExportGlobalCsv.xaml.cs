@@ -6,10 +6,10 @@ using LibsExportGlobal.ExportGlobal.SStruc;
 
 namespace GYCsvHelper.UserControls;
 
-public partial class Csv
+public partial class ExportGlobalCsv
 {
 
-    public Csv()
+    public ExportGlobalCsv()
     {
         InitializeComponent();
     }

@@ -32,7 +32,7 @@ namespace GYCsvHelper
             => TabItemButton.IsSelected = true;
 
         private void ButtonCompilCsv_OnClick(object sender, RoutedEventArgs e)
-            => SelectItem(typeof(Csv));
+            => SelectItem(typeof(ExportGlobalCsv));
 
         private void ButtonPlaningChaud_OnClick(object sender, RoutedEventArgs e) 
             => SelectItem(typeof(PlaningChaud));
