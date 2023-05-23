@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibsPlaningAChaud", "LibsPl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibsExportGlobal", "LibsExportGlobal\LibsExportGlobal.csproj", "{B7D7401E-9765-4C10-B8A0-12E0D6AB16F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GYCsvHelperWpfApp", "GYCsvHelperWpfApp\GYCsvHelperWpfApp.csproj", "{94000B21-D553-445B-BB5F-8577B34E5C37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GYCsvHelper", "GYCsvHelper\GYCsvHelper.csproj", "{94000B21-D553-445B-BB5F-8577B34E5C37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

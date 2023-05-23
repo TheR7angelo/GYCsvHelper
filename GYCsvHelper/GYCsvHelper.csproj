@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <Version>2.0.3</Version>
+        <ApplicationIcon>Icone.ico</ApplicationIcon>
+        <RootNamespace>GYCsvHelperWpfApp</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Page Update="MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="UserControls\Contacts.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="UserControls\ExportGlobalCsv.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="UserControls\PlaningChaud.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="UserControls\Zones.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="Dialog\InputBoxNumeric.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="Dialog\InputBoxString.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Icone.ico">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <AdditionalFiles Include="Icone.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+      <None Remove="Icone.svg" />
+      <AdditionalFiles Include="Icone.svg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </AdditionalFiles>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoUpdaterWpf" Version="1.0.4" />
+      <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+      <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+      <PackageReference Include="Syroot.Windows.IO.KnownFolders" Version="1.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LibsExportGlobal\LibsExportGlobal.csproj" />
+      <ProjectReference Include="..\LibsPlaningAChaud\LibsPlaningAChaud.csproj" />
+    </ItemGroup>
+
+</Project>

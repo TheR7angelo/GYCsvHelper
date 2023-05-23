@@ -1,0 +1,70 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    x:Class="GYCsvHelperWpfApp.UserControls.PlaningChaud"
+    mc:Ignorable="d">
+    <Grid>
+        <TabControl VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TabItem x:Name="TabItemMenu" Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Row="0" Grid.Column="0" Content="PROD R10" Click="ButtonProdR10_OnClick"
+                                Margin="3" />
+                        <Button Grid.Row="0" Grid.Column="1" Content="SAVGP" Click="ButtonSavGp_OnClick" Margin="3" />
+                        <Button Grid.Row="0" Grid.Column="2" Content="PROD FTTH" Click="ButtonProdFtth_OnClick"
+                                Margin="3" />
+                        <Button Grid.Row="0" Grid.Column="3" Content="SAVBL" Click="ButtonSavbl_OnClick" Margin="3" />
+
+                        <CheckBox Grid.Row="1" Grid.Column="0" x:Name="CheckBoxProdr10" IsHitTestVisible="False"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="1" Grid.Column="1" x:Name="CheckBoxSavgp" IsHitTestVisible="False"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="1" Grid.Column="2" x:Name="CheckBoxProdFtth" IsHitTestVisible="False"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="1" Grid.Column="3" x:Name="CheckBoxSavbl" IsHitTestVisible="False"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Content="Export"
+                                Click="ButtonExport_OnClick"
+                                Margin="3" />
+                    </Grid>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="3">
+                        <Button Content="Contacts" Margin="3" Click="ButtonContact_OnClick" />
+                        <Button Content="Zones" Margin="3" Click="ButtonZones_OnClick" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TabItemSecond" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Content="Retours" Click="ButtonBack_OnClick" />
+                    <Frame Grid.Row="1" x:Name="FrameSecond" NavigationUIVisibility="Hidden" />
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</UserControl>
