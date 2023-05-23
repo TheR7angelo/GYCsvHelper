@@ -11,7 +11,7 @@ public static class Common
         { Delimiter = ";", Encoding = Encoding.Latin1, BadDataFound = null };
 
     public static CsvConfiguration GetConfigurationWriter => new(CultureInfo.InvariantCulture)
-        { Delimiter = ";", Encoding = Encoding.Latin1, BadDataFound = null, HasHeaderRecord = false };
+        { Delimiter = ";", Encoding = Encoding.Latin1, BadDataFound = null, HasHeaderRecord = true };
 
     public static string GetSavePath(this SFilePath filePath, string baseName)
     {

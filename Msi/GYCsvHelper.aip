@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="20.3.2" version="20.3.2" Modules="simple" RootPath="." Language="en" Id="{3EFA5A8B-5744-421A-B959-F003905C0455}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="20.3.2" version="20.6" Modules="simple" RootPath="." Language="en" Id="{3EFA5A8B-5744-421A-B959-F003905C0455}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
     <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;FixupComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
-    <ROW Property="AI_CURRENT_YEAR" Value="2023" ValueLocId="-"/>
-    <ROW Property="AI_PACKAGING_TOOL" Value="Advanced Installer 20.3.2 build 850835f9" ValueLocId="-"/>
     <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="GYCsvHelper.exe" Type="8"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="ZP6177"/>
-    <ROW Property="ProductCode" Value="1033:{C95B4714-793A-47E0-88CE-2C568E8EF709} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{2EF7F548-4E2E-4CD0-BC8F-DC1BB1542D3E} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="GYCsvHelper"/>
-    <ROW Property="ProductVersion" Value="2.0.3"/>
+    <ROW Property="ProductVersion" Value="2.1.1"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{5DACA99F-9566-4E72-80CC-00F1064A186F}"/>
@@ -30,29 +28,65 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="AutoUpdater_Dir" Directory_Parent="APPDIR" DefaultDir="AUTOUP~1|AutoUpdater"/>
     <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
     <ROW Directory="Excel_Dir" Directory_Parent="APPDIR" DefaultDir="Excel"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="Sql_Dir" Directory_Parent="APPDIR" DefaultDir="Sql"/>
     <ROW Directory="StartMenuFolder" Directory_Parent="TARGETDIR" DefaultDir="STARTM~1|StartMenuFolder" IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="ar_Dir" Directory_Parent="APPDIR" DefaultDir="ar"/>
     <ROW Directory="cs_Dir" Directory_Parent="APPDIR" DefaultDir="cs"/>
+    <ROW Directory="da_Dir" Directory_Parent="APPDIR" DefaultDir="da"/>
     <ROW Directory="de_Dir" Directory_Parent="APPDIR" DefaultDir="de"/>
     <ROW Directory="es_Dir" Directory_Parent="APPDIR" DefaultDir="es"/>
     <ROW Directory="fr_Dir" Directory_Parent="APPDIR" DefaultDir="fr"/>
     <ROW Directory="it_Dir" Directory_Parent="APPDIR" DefaultDir="it"/>
+    <ROW Directory="jaJP_Dir" Directory_Parent="APPDIR" DefaultDir="ja-JP"/>
     <ROW Directory="ja_Dir" Directory_Parent="APPDIR" DefaultDir="ja"/>
     <ROW Directory="ko_Dir" Directory_Parent="APPDIR" DefaultDir="ko"/>
+    <ROW Directory="lv_Dir" Directory_Parent="APPDIR" DefaultDir="lv"/>
+    <ROW Directory="nl_Dir" Directory_Parent="APPDIR" DefaultDir="nl"/>
     <ROW Directory="pl_Dir" Directory_Parent="APPDIR" DefaultDir="pl"/>
     <ROW Directory="ptBR_Dir" Directory_Parent="APPDIR" DefaultDir="pt-BR"/>
+    <ROW Directory="pt_Dir" Directory_Parent="APPDIR" DefaultDir="pt"/>
     <ROW Directory="ru_Dir" Directory_Parent="APPDIR" DefaultDir="ru"/>
+    <ROW Directory="sk_Dir" Directory_Parent="APPDIR" DefaultDir="sk"/>
+    <ROW Directory="sv_Dir" Directory_Parent="APPDIR" DefaultDir="sv"/>
+    <ROW Directory="th_Dir" Directory_Parent="APPDIR" DefaultDir="th"/>
     <ROW Directory="tr_Dir" Directory_Parent="APPDIR" DefaultDir="tr"/>
     <ROW Directory="zhHans_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hans"/>
     <ROW Directory="zhHant_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hant"/>
+    <ROW Directory="zhTW_Dir" Directory_Parent="APPDIR" DefaultDir="zh-TW"/>
+    <ROW Directory="zh_Dir" Directory_Parent="APPDIR" DefaultDir="zh"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="APPDIR" ComponentId="{CBE93ECC-DD41-4F48-A158-4FC252675D79}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="Accessibility.dll" ComponentId="{EE720713-BF56-481E-B4C0-258C6220FE97}" Directory_="APPDIR" Attributes="0" KeyPath="Accessibility.dll"/>
+    <ROW Component="AutoUpdater" ComponentId="{7B8F9272-E9C7-40F9-9751-A67752DC8A48}" Directory_="AutoUpdater_Dir" Attributes="0"/>
+    <ROW Component="AutoUpdater.NET.dll" ComponentId="{48B9BEC6-BCB7-4A9C-A529-393D05CB4A80}" Directory_="APPDIR" Attributes="0" KeyPath="AutoUpdater.NET.dll"/>
+    <ROW Component="AutoUpdater.NET.resources.dll" ComponentId="{827FF77E-C2A1-4A22-8826-DB179A82AB23}" Directory_="ar_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_1" ComponentId="{543492C0-CF4C-4862-B94A-1575747586D5}" Directory_="cs_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_1"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_10" ComponentId="{AF7C074C-CDBE-4636-9362-B6D6D224F430}" Directory_="nl_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_10"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_11" ComponentId="{D465E4C9-4E9E-4AE0-A505-9F5869313D08}" Directory_="pl_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_11"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_12" ComponentId="{1A3FB80F-B0FA-48AB-92D3-26E10BB56F00}" Directory_="pt_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_12"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_13" ComponentId="{B6474505-37C9-4B04-B1E6-DF54AEA58D45}" Directory_="ptBR_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_13"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_14" ComponentId="{48E651AD-289C-48AB-A5DB-653D1B9DCBF5}" Directory_="ru_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_14"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_15" ComponentId="{187AFBFF-4759-4ECE-B6AE-A7FF0E4FD172}" Directory_="sk_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_15"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_16" ComponentId="{C00A2A90-6ABA-4539-A42F-19783509E6E5}" Directory_="sv_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_16"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_17" ComponentId="{5E23470F-557A-4D52-A73B-A78E9189E8E7}" Directory_="th_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_17"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_18" ComponentId="{CB01AA7F-C9B1-4152-9F1E-41DBA9B009CD}" Directory_="tr_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_18"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_19" ComponentId="{C5E58E3E-D09E-48AF-B78F-57F329B584F5}" Directory_="zh_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_19"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_2" ComponentId="{7CE59CBE-C2AD-4765-BD11-1E66AAAE106F}" Directory_="da_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_2"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_20" ComponentId="{0BBA7E3E-F44B-44E3-86E4-5EC01D7AB8D4}" Directory_="zhTW_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_20"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_3" ComponentId="{61FB73D8-5A8F-4421-A1FC-39F13C3CBFA3}" Directory_="de_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_3"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_4" ComponentId="{5C51DD81-9D2F-44AF-8BEB-1E441D4AD9BC}" Directory_="es_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_4"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_5" ComponentId="{6ED0102F-0AE8-43AC-80C2-52126B0E5011}" Directory_="fr_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_5"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_6" ComponentId="{DF9922AB-A136-46B6-AF35-E0F1B5859C45}" Directory_="it_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_6"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_7" ComponentId="{5C8D14B0-C624-4075-B8A9-18425C373BF4}" Directory_="jaJP_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_7"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_8" ComponentId="{9B345EB6-C2F6-42D1-B176-C9E45E49A6E7}" Directory_="ko_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_8"/>
+    <ROW Component="AutoUpdater.NET.resources.dll_9" ComponentId="{AD60C20C-5719-4E4A-A52B-AAEF19733431}" Directory_="lv_Dir" Attributes="0" KeyPath="AutoUpdater.NET.resources.dll_9"/>
+    <ROW Component="AutoUpdaterWpf.dll" ComponentId="{7000E3C2-3C56-4C7C-898F-DBA6DAD4E22D}" Directory_="APPDIR" Attributes="0" KeyPath="AutoUpdaterWpf.dll"/>
     <ROW Component="ControlzEx.dll" ComponentId="{35EE1CA9-3EF8-4578-A3EC-BC236309B4EC}" Directory_="APPDIR" Attributes="0" KeyPath="ControlzEx.dll"/>
     <ROW Component="CsvHelper.dll" ComponentId="{F0EE1C76-F1F2-46E2-8533-3321647D59F5}" Directory_="APPDIR" Attributes="0" KeyPath="CsvHelper.dll"/>
     <ROW Component="D3DCompiler_47_cor3.dll" ComponentId="{2A15C5DD-CAF5-44EF-B2E9-639059EB9716}" Directory_="APPDIR" Attributes="256" KeyPath="D3DCompiler_47_cor3.dll"/>
@@ -69,6 +103,7 @@
     <ROW Component="LibsPlaningAChaud.dll" ComponentId="{C6291C85-A888-4077-A2A6-F8A03F67664B}" Directory_="APPDIR" Attributes="0" KeyPath="LibsPlaningAChaud.dll"/>
     <ROW Component="MahApps.Metro.dll" ComponentId="{F08E0C8C-8B3A-42F3-B935-61C16309BBCF}" Directory_="APPDIR" Attributes="0" KeyPath="MahApps.Metro.dll"/>
     <ROW Component="MahApps.Metro.resources.dll" ComponentId="{94971D1D-6DCA-4385-AD5F-E1B9226697B9}" Directory_="de_Dir" Attributes="0" KeyPath="MahApps.Metro.resources.dll"/>
+    <ROW Component="Markdig.dll" ComponentId="{AD2AC5E8-2F11-46D2-BC7E-1C88EBC1FA66}" Directory_="APPDIR" Attributes="0" KeyPath="Markdig.dll"/>
     <ROW Component="Microsoft.CSharp.dll" ComponentId="{34CC9085-B93A-481A-8A91-DA212C5B3762}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.CSharp.dll"/>
     <ROW Component="Microsoft.DiaSymReader.Native.amd64.dll" ComponentId="{57BFF81D-ADE4-4B66-AB26-463ADFC6D15B}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.DiaSymReader.Native.amd64.dll"/>
     <ROW Component="Microsoft.Extensions.Configuration.Abstractions.dll" ComponentId="{3036C8D8-33E3-4A86-962E-4F2675B2B852}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.Abstractions.dll"/>
@@ -96,6 +131,9 @@
     <ROW Component="Microsoft.VisualBasic.Forms.resources.dll_23" ComponentId="{68660AD2-3609-49C5-BD93-7B81EF4868D8}" Directory_="zhHans_Dir" Attributes="0" KeyPath="Microsoft.VisualBasic.Forms.resources.dll_23"/>
     <ROW Component="Microsoft.VisualBasic.Forms.resources.dll_24" ComponentId="{0F5D56C7-FC1A-4146-9EE1-ED4AA20E5F79}" Directory_="zhHant_Dir" Attributes="0" KeyPath="Microsoft.VisualBasic.Forms.resources.dll_24"/>
     <ROW Component="Microsoft.VisualBasic.dll" ComponentId="{F64B0784-2053-4586-9517-D33000AF9F1F}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.VisualBasic.dll"/>
+    <ROW Component="Microsoft.Web.WebView2.Core.dll" ComponentId="{71D20E71-9573-4DAF-84C7-4BAB2310B91E}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Web.WebView2.Core.dll"/>
+    <ROW Component="Microsoft.Web.WebView2.WinForms.dll" ComponentId="{2027EEEA-9E20-434E-AB81-D40E210CFD37}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Web.WebView2.WinForms.dll"/>
+    <ROW Component="Microsoft.Web.WebView2.Wpf.dll" ComponentId="{80AB7188-DBF1-4344-B09B-AE237F936647}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Web.WebView2.Wpf.dll"/>
     <ROW Component="Microsoft.Win32.Primitives.dll" ComponentId="{3E86EF89-B184-409E-B395-7D666B101045}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Win32.Primitives.dll"/>
     <ROW Component="Microsoft.Win32.Registry.AccessControl.dll" ComponentId="{5F8AE2C8-AC81-4455-8D5F-741A3F4DECF6}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.Win32.Registry.AccessControl.dll"/>
     <ROW Component="Microsoft.Win32.Registry.dll" ComponentId="{17B0783E-793C-4A45-A823-BC66D0081239}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.Win32.Registry.dll"/>
@@ -500,7 +538,7 @@
     <ROW Component="UIAutomationTypes.resources.dll_22" ComponentId="{88EF8D32-934E-4BD2-A3B3-6CEE52FB1B9A}" Directory_="tr_Dir" Attributes="0" KeyPath="UIAutomationTypes.resources.dll_22"/>
     <ROW Component="UIAutomationTypes.resources.dll_23" ComponentId="{857E28DC-F95E-4AD0-933A-CC2DE7469C43}" Directory_="zhHans_Dir" Attributes="0" KeyPath="UIAutomationTypes.resources.dll_23"/>
     <ROW Component="UIAutomationTypes.resources.dll_24" ComponentId="{5A62CA80-8059-43F5-B4E8-3BAD57F36E6B}" Directory_="zhHant_Dir" Attributes="0" KeyPath="UIAutomationTypes.resources.dll_24"/>
-    <ROW Component="UpdateManager.dll" ComponentId="{27DCF01D-BF28-455E-BA4E-CB8CA92FB109}" Directory_="APPDIR" Attributes="0" KeyPath="UpdateManager.dll"/>
+    <ROW Component="WebView2Loader.dll" ComponentId="{0A9E17F5-FFC7-4312-9994-FFA5057B9B06}" Directory_="APPDIR" Attributes="256" KeyPath="WebView2Loader.dll"/>
     <ROW Component="WindowsBase.dll" ComponentId="{3C8FDAA4-A8FB-4813-8FF5-174CF2154701}" Directory_="APPDIR" Attributes="256" KeyPath="WindowsBase.dll"/>
     <ROW Component="WindowsBase.resources.dll" ComponentId="{BE26D00B-76B0-4F7B-95D7-D8D43AB57B2B}" Directory_="cs_Dir" Attributes="0" KeyPath="WindowsBase.resources.dll"/>
     <ROW Component="WindowsBase.resources.dll_13" ComponentId="{23F1CC09-6A0E-4189-A12E-921D7AE989CE}" Directory_="de_Dir" Attributes="0" KeyPath="WindowsBase.resources.dll_13"/>
@@ -538,7 +576,7 @@
     <ROW Component="hostfxr.dll" ComponentId="{8F1A5FCE-8AA2-46A1-88D8-2387E32F878C}" Directory_="APPDIR" Attributes="256" KeyPath="hostfxr.dll"/>
     <ROW Component="hostpolicy.dll" ComponentId="{22E3BD1D-37C6-4B4F-A958-8A6BAF9875F9}" Directory_="APPDIR" Attributes="256" KeyPath="hostpolicy.dll"/>
     <ROW Component="mscordaccore.dll" ComponentId="{B1F96549-221E-41F2-9C59-EDADC2F2947B}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore.dll"/>
-    <ROW Component="mscordaccore_amd64_amd64_7.0.222.60605.dll" ComponentId="{B37DFD62-4468-40FE-A6D6-4BAD73AA48E2}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore_amd64_amd64_7.0.222.60605.dll"/>
+    <ROW Component="mscordaccore_amd64_amd64_7.0.423.11508.dll" ComponentId="{F1CBD8D3-3906-488C-A2C1-D2B10735233E}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore_amd64_amd64_7.0.423.11508.dll"/>
     <ROW Component="mscordbi.dll" ComponentId="{4AA38C83-A2BA-4D36-864D-5BCBE970B61A}" Directory_="APPDIR" Attributes="256" KeyPath="mscordbi.dll"/>
     <ROW Component="mscorlib.dll" ComponentId="{9AA452AB-C28F-4F3A-9438-09F87E595D41}" Directory_="APPDIR" Attributes="0" KeyPath="mscorlib.dll"/>
     <ROW Component="mscorrc.dll" ComponentId="{6C017736-74D4-42ED-A2DC-298D089DD3CC}" Directory_="APPDIR" Attributes="256" KeyPath="mscorrc.dll"/>
@@ -591,7 +629,6 @@
     <ROW File="Microsoft.Win32.SystemEvents.dll" Component_="Microsoft.Win32.SystemEvents.dll" FileName="MICRO~18.DLL|Microsoft.Win32.SystemEvents.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\Microsoft.Win32.SystemEvents.dll" SelfReg="false"/>
     <ROW File="Microsoft.Xaml.Behaviors.dll" Component_="Microsoft.Xaml.Behaviors.dll" FileName="MICRO~19.DLL|Microsoft.Xaml.Behaviors.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\Microsoft.Xaml.Behaviors.dll" SelfReg="false"/>
     <ROW File="mscordaccore.dll" Component_="mscordaccore.dll" FileName="MSCORD~1.DLL|mscordaccore.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\mscordaccore.dll" SelfReg="false"/>
-    <ROW File="mscordaccore_amd64_amd64_7.0.222.60605.dll" Component_="mscordaccore_amd64_amd64_7.0.222.60605.dll" FileName="MSCORD~2.DLL|mscordaccore_amd64_amd64_7.0.222.60605.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\mscordaccore_amd64_amd64_7.0.222.60605.dll" SelfReg="false"/>
     <ROW File="mscordbi.dll" Component_="mscordbi.dll" FileName="mscordbi.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\mscordbi.dll" SelfReg="false"/>
     <ROW File="mscorlib.dll" Component_="mscorlib.dll" FileName="mscorlib.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\mscorlib.dll" SelfReg="false"/>
     <ROW File="mscorrc.dll" Component_="mscorrc.dll" FileName="mscorrc.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\mscorrc.dll" SelfReg="false"/>
@@ -812,7 +849,6 @@
     <ROW File="UIAutomationClientSideProviders.dll" Component_="UIAutomationClientSideProviders.dll" FileName="UIAUTO~2.DLL|UIAutomationClientSideProviders.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\UIAutomationClientSideProviders.dll" SelfReg="false"/>
     <ROW File="UIAutomationProvider.dll" Component_="UIAutomationProvider.dll" FileName="UIAUTO~3.DLL|UIAutomationProvider.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\UIAutomationProvider.dll" SelfReg="false"/>
     <ROW File="UIAutomationTypes.dll" Component_="UIAutomationTypes.dll" FileName="UIAUTO~4.DLL|UIAutomationTypes.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\UIAutomationTypes.dll" SelfReg="false"/>
-    <ROW File="UpdateManager.dll" Component_="UpdateManager.dll" FileName="UPDATE~1.DLL|UpdateManager.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\UpdateManager.dll" SelfReg="false"/>
     <ROW File="vcruntime140_cor3.dll" Component_="vcruntime140_cor3.dll" FileName="VCRUNT~1.DLL|vcruntime140_cor3.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\vcruntime140_cor3.dll" SelfReg="false"/>
     <ROW File="WindowsBase.dll" Component_="WindowsBase.dll" FileName="WINDOW~1.DLL|WindowsBase.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\WindowsBase.dll" SelfReg="false"/>
     <ROW File="WindowsFormsIntegration.dll" Component_="WindowsFormsIntegration.dll" FileName="WINDOW~2.DLL|WindowsFormsIntegration.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\WindowsFormsIntegration.dll" SelfReg="false"/>
@@ -1053,6 +1089,35 @@
     <ROW File="DirectWriteForwarder.dll" Component_="DirectWriteForwarder.dll" FileName="DIRECT~1.DLL|DirectWriteForwarder.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\DirectWriteForwarder.dll" SelfReg="false"/>
     <ROW File="EntityFramework.dll" Component_="EntityFramework.dll" FileName="ENTITY~1.DLL|EntityFramework.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\EntityFramework.dll" SelfReg="false"/>
     <ROW File="EntityFramework.SqlServer.dll" Component_="EntityFramework.SqlServer.dll" FileName="ENTITY~2.DLL|EntityFramework.SqlServer.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\EntityFramework.SqlServer.dll" SelfReg="false"/>
+    <ROW File="Markdig.dll" Component_="Markdig.dll" FileName="Markdig.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\Markdig.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Web.WebView2.Core.dll" Component_="Microsoft.Web.WebView2.Core.dll" FileName="MICRO~20.DLL|Microsoft.Web.WebView2.Core.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\Microsoft.Web.WebView2.Core.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Web.WebView2.WinForms.dll" Component_="Microsoft.Web.WebView2.WinForms.dll" FileName="MICRO~21.DLL|Microsoft.Web.WebView2.WinForms.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\Microsoft.Web.WebView2.WinForms.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Web.WebView2.Wpf.dll" Component_="Microsoft.Web.WebView2.Wpf.dll" FileName="MICRO~22.DLL|Microsoft.Web.WebView2.Wpf.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\Microsoft.Web.WebView2.Wpf.dll" SelfReg="false"/>
+    <ROW File="mscordaccore_amd64_amd64_7.0.423.11508.dll" Component_="mscordaccore_amd64_amd64_7.0.423.11508.dll" FileName="MSCORD~3.DLL|mscordaccore_amd64_amd64_7.0.423.11508.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\mscordaccore_amd64_amd64_7.0.423.11508.dll" SelfReg="false"/>
+    <ROW File="WebView2Loader.dll" Component_="WebView2Loader.dll" FileName="WEBVIE~1.DLL|WebView2Loader.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\WebView2Loader.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll" Component_="AutoUpdater.NET.resources.dll" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\ar\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_1" Component_="AutoUpdater.NET.resources.dll_1" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\cs\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_2" Component_="AutoUpdater.NET.resources.dll_2" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\da\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_3" Component_="AutoUpdater.NET.resources.dll_3" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\de\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_4" Component_="AutoUpdater.NET.resources.dll_4" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\es\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_5" Component_="AutoUpdater.NET.resources.dll_5" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\fr\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_6" Component_="AutoUpdater.NET.resources.dll_6" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\it\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_7" Component_="AutoUpdater.NET.resources.dll_7" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\ja-JP\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_8" Component_="AutoUpdater.NET.resources.dll_8" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\ko\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_9" Component_="AutoUpdater.NET.resources.dll_9" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\lv\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_10" Component_="AutoUpdater.NET.resources.dll_10" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\nl\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_11" Component_="AutoUpdater.NET.resources.dll_11" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\pl\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_12" Component_="AutoUpdater.NET.resources.dll_12" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\pt\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_13" Component_="AutoUpdater.NET.resources.dll_13" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\pt-BR\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_14" Component_="AutoUpdater.NET.resources.dll_14" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\ru\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_15" Component_="AutoUpdater.NET.resources.dll_15" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\sk\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_16" Component_="AutoUpdater.NET.resources.dll_16" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\sv\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_17" Component_="AutoUpdater.NET.resources.dll_17" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\th\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_18" Component_="AutoUpdater.NET.resources.dll_18" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\tr\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_19" Component_="AutoUpdater.NET.resources.dll_19" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\zh\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.resources.dll_20" Component_="AutoUpdater.NET.resources.dll_20" FileName="AUTOUP~1.DLL|AutoUpdater.NET.resources.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\zh-TW\AutoUpdater.NET.resources.dll" SelfReg="false"/>
+    <ROW File="AutoUpdater.NET.dll" Component_="AutoUpdater.NET.dll" FileName="AUTOUP~1.DLL|AutoUpdater.NET.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\AutoUpdater.NET.dll" SelfReg="false"/>
+    <ROW File="AutoUpdaterWpf.dll" Component_="AutoUpdaterWpf.dll" FileName="AUTOUP~2.DLL|AutoUpdaterWpf.dll" Attributes="0" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\AutoUpdaterWpf.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -1109,6 +1174,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+    <ROW Directory_="AutoUpdater_Dir" Component_="AutoUpdater" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
@@ -1160,7 +1226,6 @@
     <ROW Feature_="MainFeature" Component_="Microsoft.Win32.SystemEvents.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.Xaml.Behaviors.dll"/>
     <ROW Feature_="MainFeature" Component_="mscordaccore.dll"/>
-    <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_7.0.222.60605.dll"/>
     <ROW Feature_="MainFeature" Component_="mscordbi.dll"/>
     <ROW Feature_="MainFeature" Component_="mscorlib.dll"/>
     <ROW Feature_="MainFeature" Component_="mscorrc.dll"/>
@@ -1381,7 +1446,6 @@
     <ROW Feature_="MainFeature" Component_="UIAutomationClientSideProviders.dll"/>
     <ROW Feature_="MainFeature" Component_="UIAutomationProvider.dll"/>
     <ROW Feature_="MainFeature" Component_="UIAutomationTypes.dll"/>
-    <ROW Feature_="MainFeature" Component_="UpdateManager.dll"/>
     <ROW Feature_="MainFeature" Component_="vcruntime140_cor3.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsBase.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsFormsIntegration.dll"/>
@@ -1623,6 +1687,36 @@
     <ROW Feature_="MainFeature" Component_="EntityFramework.dll"/>
     <ROW Feature_="MainFeature" Component_="EntityFramework.SqlServer.dll"/>
     <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater"/>
+    <ROW Feature_="MainFeature" Component_="Markdig.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.WinForms.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_7.0.423.11508.dll"/>
+    <ROW Feature_="MainFeature" Component_="WebView2Loader.dll"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_4"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_6"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_7"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_8"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_9"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_10"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_11"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_12"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_13"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_14"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_15"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_16"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_17"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_18"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_19"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.resources.dll_20"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdater.NET.dll"/>
+    <ROW Feature_="MainFeature" Component_="AutoUpdaterWpf.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="GYCsvHelper.exe" SourcePath="..\GYCsvHelperWpfApp\bin\Release\net7.0-windows\win-x64\publish\GYCsvHelper.exe" Index="0"/>

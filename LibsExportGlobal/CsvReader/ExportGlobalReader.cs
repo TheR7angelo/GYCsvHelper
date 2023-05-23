@@ -74,7 +74,7 @@ public class ExportGlobalReader : IReader, IDisposable
     {
         using var writer = new StreamWriter(FileSavePath, false, Encoding.Latin1);
         using var csv = new CsvWriter(writer, Common.GetConfigurationWriter);
-
+        
         csv.WriteRecords(records);
     }
 

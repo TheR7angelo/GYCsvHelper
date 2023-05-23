@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 using LibsExportGlobal.CsvReader;
 using LibsExportGlobal.ExportGlobal.SStruc.ExportGlobal;
 using LibsExportGlobal.ExportGlobal.SStruc.RestitCheckControl;
@@ -9,7 +11,6 @@ namespace GYCsvHelperWpfApp.UserControls;
 
 public partial class ExportGlobalCsv
 {
-
     public ExportGlobalCsv()
     {
         InitializeComponent();
@@ -71,7 +72,9 @@ public partial class ExportGlobalCsv
 
     private void ButtonExportFiche_OnClick(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFileDialog { Filter = "CSV (séparateur : point-virgule) (*.csv) | *.csv" };
+        var dialog = new OpenFileDialog
+            { Filter = "CSV (séparateur : point-virgule) (*.csv) | *.csv", Multiselect = true };
+        
         if (!dialog.ShowDialog().Equals(true)) return;
 
         var savePathDialog = new SaveFileDialog
@@ -114,6 +117,19 @@ public partial class ExportGlobalCsv
 
         worker.CleanFirstRow(8, false);
         var data = worker.Read<ExportGlobal>();
-        worker.Write(data);
+        
+        var properties = typeof(ExportGlobal).GetProperties();
+        var tempData = new List<ExportGlobal>();
+        foreach (var temp in data)
+        {
+            foreach (var property in properties)
+            {
+                var str = ((string)property.GetValue(temp)!).Trim('\'');
+                property.SetValue(temp, str);
+            }
+            
+            tempData.Add(temp);
+        }
+        worker.Write(tempData);
     }
 }
