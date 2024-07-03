@@ -39,6 +39,9 @@ public partial class PlaningChaud
     private void ButtonSavbl_OnClick(object sender, RoutedEventArgs e)
         => ImportData(EActivity.Savbl, CheckBoxSavbl);
 
+    private void ButtonSavblo_OnClick(object sender, RoutedEventArgs e)
+        => ImportData(EActivity.Savblo, CheckBoxSavblo);
+
     private void ImportData(EActivity activity, ToggleButton checkBox)
     {
         try
@@ -71,8 +74,8 @@ public partial class PlaningChaud
 
     private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
     {
-        var lst = new List<ToggleButton> { CheckBoxProdr10, CheckBoxSavgp, CheckBoxProdFtth, CheckBoxSavbl };
-        var valid = lst.Count(s => s.IsChecked.Equals(true)).Equals(4);
+        var lst = new List<ToggleButton> { CheckBoxProdr10, CheckBoxSavgp, CheckBoxProdFtth, CheckBoxSavbl, CheckBoxSavblo };
+        var valid = lst.Count(s => s.IsChecked.Equals(true)).Equals(lst.Count);
 
         if (valid)
         {

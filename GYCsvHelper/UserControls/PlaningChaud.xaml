@@ -25,6 +25,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
                         <Button Grid.Row="0" Grid.Column="0" Content="PROD R10" Click="ButtonProdR10_OnClick"
@@ -33,6 +34,7 @@
                         <Button Grid.Row="0" Grid.Column="2" Content="PROD FTTH" Click="ButtonProdFtth_OnClick"
                                 Margin="3" />
                         <Button Grid.Row="0" Grid.Column="3" Content="SAVBL" Click="ButtonSavbl_OnClick" Margin="3" />
+                        <Button Grid.Row="0" Grid.Column="4" Content="SAVBLO" Click="ButtonSavblo_OnClick" Margin="3" />
 
                         <CheckBox Grid.Row="1" Grid.Column="0" x:Name="CheckBoxProdr10" IsHitTestVisible="False"
                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -42,8 +44,10 @@
                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
                         <CheckBox Grid.Row="1" Grid.Column="3" x:Name="CheckBoxSavbl" IsHitTestVisible="False"
                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="1" Grid.Column="4" x:Name="CheckBoxSavblo" IsHitTestVisible="False"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Content="Export"
+                        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Content="Export"
                                 Click="ButtonExport_OnClick"
                                 Margin="3" />
                     </Grid>

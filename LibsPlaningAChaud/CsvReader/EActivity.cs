@@ -6,6 +6,6 @@ public enum EActivity
     ProdGpCu,
     SavGpCu,
     ProdFtth,
-    Savbl
-    
+    Savbl,
+    Savblo
 }
