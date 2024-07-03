@@ -41,25 +41,32 @@ public partial class PlaningChaud
 
     private void ImportData(EActivity activity, ToggleButton checkBox)
     {
-        var fileDialog = new OpenFileDialog
+        try
         {
-            Filter = "Fichier Csv (*.csv)|*.csv",
-            Multiselect = true
-        };
+            var fileDialog = new OpenFileDialog
+            {
+                Filter = "Fichier Csv (*.csv)|*.csv",
+                Multiselect = true
+            };
 
-        if (!fileDialog.ShowDialog().Equals(true)) return;
-        var files = fileDialog.FileNames;
+            if (!fileDialog.ShowDialog().Equals(true)) return;
+            var files = fileDialog.FileNames;
 
-        var result = new List<ExportInterventionCsv>();
-        foreach (var file in files)
-        {
-            if (!File.Exists(file)) return;
-            var rowsCsv = Reader.Read(file, activity);
-            result.AddRange(rowsCsv);
-        }
+            var result = new List<ExportInterventionCsv>();
+            foreach (var file in files)
+            {
+                if (!File.Exists(file)) return;
+                var rowsCsv = Reader.Read(file, activity);
+                result.AddRange(rowsCsv);
+            }
         
-        _sqlHandler.ImportRows(result, activity);
-        checkBox.IsChecked = true;
+            _sqlHandler.ImportRows(result, activity);
+            checkBox.IsChecked = true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
     }
 
     private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
