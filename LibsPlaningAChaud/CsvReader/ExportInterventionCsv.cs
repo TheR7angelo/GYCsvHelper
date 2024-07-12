@@ -45,7 +45,7 @@ public class ExportInterventionCsv : INotifyPropertyChanged
     }
     
     private string _planifFt = string.Empty;
-    [Name("Planif FT")]
+    [Name("Date cible initiale")]
     public string PlanifFt
     {
         get => _planifFt;
